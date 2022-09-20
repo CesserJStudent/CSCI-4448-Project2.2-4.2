@@ -7,6 +7,9 @@ abstract class Adventurer {
     Integer[] location = {0, 1, 1};
     int health = 3;
     int treasure = 0;
+    String name;
+
+    int turns = 1;
 
     /**
      * @param upperbound
@@ -41,9 +44,7 @@ abstract class Adventurer {
         int randInt = getRandInt(validDirections.size());                        // chooses a random index to get a direction
         String chosenDirection = validDirections.get(randInt);
         board.getCurrentRoom(location).removeAdventurer(this);                   // removes the adventurer from the previous room before updating location
-        for (int i = 0; i < 3; i++){
-            location[i] = adjRooms.get(chosenDirection)[i];                      // updates location
-        }
+        location = adjRooms.get(chosenDirection);// updates location
         board.getCurrentRoom(location).addAdventurer(this);                      // adds the adventurer to the room associated with location
     }
 
@@ -58,11 +59,16 @@ abstract class Adventurer {
     /**
      * Rolls two dice (1-6). If their sum is greater than 10, add treasure to the current adventurer
     */
-    public void loot() {
-        int lootCheck = (getRandInt(6) + 1) + (getRandInt(6) + 1);
-        if (lootCheck >= 10) {
-            treasure++;
+    public int loot(Room curRoom) {
+        if(curRoom.hasTreasure == true) {
+            int lootCheck = (getRandInt(6) + 1) + (getRandInt(6) + 1);
+            if (lootCheck >= 10) {
+                treasure++;
+                curRoom.hasTreasure = false;
+                return(1);
+            }
         }
+        return(0);
     }
 
 }
@@ -71,8 +77,10 @@ abstract class Adventurer {
  * An adventurer who gets +2 to each dice roll when fighting
 */
 class Brawler extends Adventurer {
-    Brawler(GameBoard gb) {
+    Brawler(GameBoard gb, Integer[] loc) {
         board = gb;
+        name = "B";
+        location = loc;
     }
     public int fight() {
         // adds an extra +2 to each dice roll since this is a Brawler
@@ -84,8 +92,11 @@ class Brawler extends Adventurer {
  * An adventurer who has a 50% chance not to fight creatures found in their room (implement this somewhere else)
 */
 class Sneaker extends Adventurer {
-    Sneaker(GameBoard gb) {
+
+    Sneaker(GameBoard gb, Integer[] loc) {
         board = gb;
+        name = "S";
+        location = loc;
     }
 }
 
@@ -93,8 +104,11 @@ class Sneaker extends Adventurer {
  * An adventurer who gets to perform two actions per turn (implement this somewhere else)
 */
 class Runner extends Adventurer {
-    Runner(GameBoard gb) {
+    Runner(GameBoard gb, Integer[] loc) {
         board = gb;
+        name = "R";
+        location = loc;
+        turns = 2;
     }
 }
 
@@ -102,8 +116,10 @@ class Runner extends Adventurer {
  * An adventurer who gets +1 to finding treasure and +1 to fighting
 */
 class Thief extends Adventurer {
-    Thief(GameBoard gb) {
+    Thief(GameBoard gb, Integer[] loc) {
         board = gb;
+        name = "T";
+        location = loc;
     }
 
     public int fight() {
@@ -111,11 +127,16 @@ class Thief extends Adventurer {
         return ((getRandInt(6) + 1) + (getRandInt(6) + 1)) + 1;
     }
 
-    public void loot() {
+    public int loot(Room curRoom) {
         // adds +1 to the sum of the two rolls
-        int lootCheck = (getRandInt(6) + 1) + (getRandInt(6) + 1) + 1;
-        if (lootCheck >= 10) {
-            treasure++;
+        if(curRoom.hasTreasure == true) {
+            int lootCheck = (getRandInt(6) + 1) + (getRandInt(6) + 1) + 1;
+            if (lootCheck >= 10) {
+                treasure++;
+                curRoom.hasTreasure = false;
+                return (1);
+            }
         }
+        return(0);
     }
 }

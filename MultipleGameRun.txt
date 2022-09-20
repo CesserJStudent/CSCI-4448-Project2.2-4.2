@@ -1,0 +1,32 @@
+Game 0: All treasure found
+Game 1: All treasure found
+Game 2: All treasure found
+Game 3: All treasure found
+Game 4: All treasure found
+Game 5: All treasure found
+Game 6: All treasure found
+Game 7: All treasure found
+Game 8: All treasure found
+Game 9: All treasure found
+Game 10: All treasure found
+Game 11: All treasure found
+Game 12: All treasure found
+Game 13: All treasure found
+Game 14: All treasure found
+Game 15: All Adventurers eliminated
+Game 16: All treasure found
+Game 17: All treasure found
+Game 18: All treasure found
+Game 19: All treasure found
+Game 20: All treasure found
+Game 21: All treasure found
+Game 22: All treasure found
+Game 23: All treasure found
+Game 24: All Adventurers eliminated
+Game 25: All treasure found
+Game 26: All treasure found
+Game 27: All treasure found
+Game 28: All Creatures eliminated
+Game 29: All treasure found
+
+Process finished with exit code 0

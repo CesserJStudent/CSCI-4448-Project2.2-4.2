@@ -3,9 +3,9 @@ import java.util.HashMap;
 import java.lang.*;
 public class GameBoard {
 
-    static ArrayList<ArrayList<ArrayList<Room>>> board = new ArrayList<>();
+    ArrayList<ArrayList<ArrayList<Room>>> board = new ArrayList<>();
 
-    static void init_game(int x_axis, int y_axis, int z_axis) {
+    public void init_game(int x_axis, int y_axis, int z_axis) {
         for (Integer i = 0; i < x_axis; i++) {
             board.add(new ArrayList<ArrayList<Room>>(y_axis)); //create list for each floor level
             for (Integer j = 0; j < y_axis; j++) {
@@ -84,7 +84,7 @@ public class GameBoard {
                             board.get(i).get(j).add(new Room(up, down, right, left, above, below));
                         }
                         //adjacent rooms for bottom left diagonal center room
-                        else if(h == 2 && j == 0) {
+                        else if(h == 0 && j == 2) {
                             Integer[] up = {i, 1, 0};
                             Integer[] down = null;
                             Integer[] right = {i, 2, 1};
@@ -104,7 +104,7 @@ public class GameBoard {
                             board.get(i).get(j).add(new Room(up, down, right, left, above, below));
                         }
                         //adjacent rooms for bottom right diagonal center room
-                        else if(h == 2 && j == 2) {
+                        else {
                             Integer[] up = {i, 1, 2};
                             Integer[] down = null;
                             Integer[] right = null;
@@ -123,7 +123,7 @@ public class GameBoard {
     * @param currRoom - An integer array representing the current room. i.e {1, 1, 2} = 1-1-2 = board[1][1][2]
     * @return The Room object that currRoom was representing
     */
-    Room getCurrentRoom(Integer[] currRoom){
+    public Room getCurrentRoom(Integer[] currRoom){
         return board.get(currRoom[0]).get(currRoom[1]).get(currRoom[2]);
     }
 
@@ -135,8 +135,50 @@ public class GameBoard {
         return board.get(currRoom[0]).get(currRoom[1]).get(currRoom[2]).adjacent;
     }
 
-    public static void main(String args[]) { //main method for the program
-        init_game(5,3,3);
-        System.out.println(board.get(1).get(1).get(0).adjacent.get("Down")[1]); //example will be deleted
+    public void printBoard(){
+        System.out.println("Level " + 0); //level 0 only has one room so special case
+        System.out.printf("0-1-1: ");
+        Room curRoom= getCurrentRoom(new Integer[]{0, 1, 1});
+        if (curRoom.checkForAdventurer()) { //see if adventurers in first room
+            for (int a = 0; a < curRoom.adventurersPresent.size(); a++) {
+                System.out.printf(curRoom.adventurersPresent.get(a).name + " "); //print the adventurer's name
+            }
+        }
+        else {
+            System.out.printf("- : - "); //print - if no adventurer is in room
+        }
+        System.out.printf("\n");
+
+        for (int i = 1; i < board.size(); i++) {
+            System.out.println("Level " + i);
+            for (int j = 0; j < board.get(i).size(); j++) {
+                for (int k = 0; k < board.get(i).get(j).size(); k++) {
+                    System.out.printf("   "+ i + "-" + j + "-" + k + " "); //print the room number
+                    curRoom = getCurrentRoom(new Integer[]{i, j, k}); //get the room object
+
+                    if (curRoom.checkForAdventurer()) { //check if adventurer is in room
+                        for (int a = 0; a < curRoom.adventurersPresent.size(); a++) {
+                            System.out.printf(curRoom.adventurersPresent.get(a).name + " "); //print the adventurer's name
+                        }
+                    }
+                    else {
+                        System.out.printf("- "); //print - if no adventurer is in room
+                    }
+
+                    System.out.printf(": ");
+
+                    if (curRoom.checkForCreature()) { //check if adventurer is in room
+                        for (int a = 0; a < curRoom.creaturesPresent.size(); a++) {
+                            System.out.printf(curRoom.creaturesPresent.get(a).name + " "); //print the adventurer's name
+                        }
+                    }
+                    else {
+                        System.out.printf("- "); //print - if no adventurer is in room
+                    }
+
+                }
+                System.out.printf("\n");
+            }
+        }
     }
 }

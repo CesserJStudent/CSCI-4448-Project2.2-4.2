@@ -8,6 +8,7 @@ abstract class Creature {
     int level;
     ArrayList<Integer[]> validRooms;
     Integer[] location;
+    String name;
 
     /**
      * @param upperbound
@@ -41,12 +42,12 @@ abstract class Creature {
 }
 
 class Orbiter extends Creature {
-    Orbiter(GameBoard gb) {
+    Orbiter(GameBoard gb, Integer[] loc) {
         board = gb;
-        level = getRandInt(4) + 1;
+        level = loc[0];
         validRooms = getValidRooms(4, level);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
-        location = validRooms.get(getRandInt(validRooms.size()));  // sets the starting location to a random valid room
-        board.getCurrentRoom(location).addCreature(this);
+        location = loc;  // sets the starting location to a random valid room
+        name = "OB"; //set name
     }
 
     public ArrayList<Integer[]> getValidRooms(int numLevels, int level) {
@@ -77,12 +78,12 @@ class Orbiter extends Creature {
 }
 
 class Seeker extends Creature {
-    Seeker(GameBoard gb){
+    Seeker(GameBoard gb, Integer[] loc){
         board = gb;
-        level = getRandInt(4) + 1;
+        level = loc[0];
         validRooms = getValidRooms(4, level);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
-        location = validRooms.get(getRandInt(validRooms.size()));  // sets the starting location to a random valid room
-        board.getCurrentRoom(location).addCreature(this);
+        location = loc;  // sets the starting location to a random valid room
+        name = "SK"; //set name
     }
 
     // helper function for move
@@ -117,14 +118,12 @@ class Seeker extends Creature {
 }
 
 class Blinker extends Creature {
-    Blinker(GameBoard gb){
+    Blinker(GameBoard gb, Integer[] loc){
         board = gb;
-        level = 4;
-        validRooms = getAllRooms(4);
-        ArrayList<Integer[]> startingRooms = getValidRooms(4, level); // initializes startingRooms using getValidRooms. this contains only rooms on level 4
-        location = startingRooms.get(getRandInt(startingRooms.size()));         // sets the starting location to a random room from startingRooms
-        board.getCurrentRoom(location).addCreature(this);
-        startingRooms = null;   // sets startingRooms to null, since it was only needed for the initialization of Blinker
+        level = loc[0];
+        validRooms = getAllRooms(5);
+        location = loc; // sets the starting location to a random room from startingRooms
+        name = "BK"; //set name
     }
 
     /**
@@ -148,11 +147,12 @@ class Blinker extends Creature {
         int validRoomIndex = getRandInt(validRooms.size());
         if (Arrays.equals(location, validRooms.get(validRoomIndex))) {
             move(); // if the previous location is equal to the new location at validRoomIndex, call the function again. (it wouldn't go anywhere otherwise)
+
         }
         else {
-            board.getCurrentRoom(location).removeCreature(this);
+            board.getCurrentRoom(location).removeCreature(this); // removes the creature from the room it's about to leave
             location = validRooms.get(validRoomIndex); // sets location to the new location at validRoomIndex
-            board.getCurrentRoom(location).addCreature(this);
+            board.getCurrentRoom(location).addCreature(this); //add to new location
         }
     }
 }
