@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 abstract class Creature {
-    GameBoard board;
-    int level;
-    ArrayList<Integer[]> validRooms;
-    Integer[] location;
-    String name;
+    protected GameBoard board;
+    protected int level;
+    protected ArrayList<Integer[]> validRooms;
+    protected Integer[] location;
+    protected String name;
 
     /**
      * @param upperbound
@@ -19,11 +19,15 @@ abstract class Creature {
         return randInt.nextInt(upperbound);
     }
 
-    public ArrayList<Integer[]> getValidRooms(int numLevels, int currentLevel) {
+    /**
+     * @param level
+     * @return An ArrayList containing all valid rooms a creature can inhabit on the specified level
+    */
+    public ArrayList<Integer[]> getValidRooms(int level) {
         ArrayList<Integer[]> rooms = new ArrayList<Integer[]>();
         for (int j = 0; j < 3; j++) {
             for (int k = 0; k < 3; k++) {
-                Integer[] currRoom = {currentLevel, j, k};
+                Integer[] currRoom = {level, j, k};
                 rooms.add(currRoom);
             }
         }
@@ -38,19 +42,39 @@ abstract class Creature {
         return ((getRandInt(6) + 1) + (getRandInt(6) + 1));
     }
 
-    public abstract void move();
+    /**
+     * Moves a creature from its current room to another valid room. Valid rooms vary by creature.
+     * Orbiter - any outer room on their current level
+     * Seeker - an adjacent room containing an adventurer
+     * Blinker - any room on any level except for 0-1-1
+    */
+    public void move() {
+        int validRoomIndex = getRandInt(validRooms.size());
+        if (Arrays.equals(location, validRooms.get(validRoomIndex))) {
+            move(); // if the previous location is equal to the new location at validRoomIndex, call the function again. (it wouldn't go anywhere otherwise)
+
+        }
+        else {
+            board.getCurrentRoom(location).removeCreature(this); // removes the creature from the room it's about to leave
+            location = validRooms.get(validRoomIndex); // sets location to the new location at validRoomIndex
+            board.getCurrentRoom(location).addCreature(this); //add to new location
+        }
+    }
 }
 
+/**
+ * A creature who circles the outer rooms of the level they are on, whether connected or not. They will always start in an outer room on any of the four levels.
+*/
 class Orbiter extends Creature {
     Orbiter(GameBoard gb, Integer[] loc) {
         board = gb;
         level = loc[0];
-        validRooms = getValidRooms(4, level);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
+        validRooms = getValidRooms(level);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
         location = loc;  // sets the starting location to a random valid room
         name = "OB"; //set name
     }
 
-    public ArrayList<Integer[]> getValidRooms(int numLevels, int level) {
+    public ArrayList<Integer[]> getValidRooms(int level) {
         ArrayList<Integer[]> rooms = new ArrayList<Integer[]>();
         for (int j = 0; j < 3; j++) {
             for (int k = 0; k < 3; k++) {
@@ -62,39 +86,29 @@ class Orbiter extends Creature {
         }
         return rooms;
     }
-
-    // since movement doesn't require rooms to be connected, simply pick another valid room and move there
-    public void move() {
-        int validRoomIndex = getRandInt(validRooms.size());
-        if (Arrays.equals(location, validRooms.get(validRoomIndex))) {
-            move(); // if the previous location is equal to the new location at validRoomIndex, call the function again
-        }
-        else {
-            board.getCurrentRoom(location).removeCreature(this);
-            location = validRooms.get(validRoomIndex); // sets location to the new location at validRoomIndex
-            board.getCurrentRoom(location).addCreature(this);
-        }
-    }
 }
 
 class Seeker extends Creature {
     Seeker(GameBoard gb, Integer[] loc){
         board = gb;
         level = loc[0];
-        validRooms = getValidRooms(4, level);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
+        validRooms = getValidRooms(level);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
         location = loc;  // sets the starting location to a random valid room
         name = "SK"; //set name
     }
 
-    // helper function for move
+    /**
+     * Helper function for Seeker.move(). Checks all adjacent rooms for adventurers.
+     * @return An ArrayList containing all possible rooms a Seeker can currently move to. If the ArrayList was empty returns null instead
+    */
     private ArrayList<Integer[]> getPossibleRooms() {
         ArrayList<Integer[]> possibleRooms = new ArrayList<Integer[]>();
         HashMap<String, Integer[]> adjRooms = board.getAdjacentRooms(location);  // gets all adjacent rooms using a HashMap
-        for (String i : adjRooms.keySet()) {     // traverses the adjRooms HashMap. i is set to the key each loop
+        for (String i : adjRooms.keySet()) {                                     // traverses the adjRooms HashMap. i is set to the key each loop
             if (adjRooms.get(i) != null && i != "Above" && i != "Below") {       // checks if the value associated with the key isn't null, as well as making sure the room isn't on another level
-                Boolean adventurerPresent = board.getCurrentRoom(adjRooms.get(i)).checkForAdventurer();
+                Boolean adventurerPresent = board.getCurrentRoom(adjRooms.get(i)).checkForAdventurer(); // checks for adventurers in the current adjacent room
                 if (adventurerPresent) {
-                    possibleRooms.add(adjRooms.get(i));
+                    possibleRooms.add(adjRooms.get(i)); // adds the adjacent room to possibleRooms if an adventurer was found
                 }
             }
         }
@@ -121,7 +135,7 @@ class Blinker extends Creature {
     Blinker(GameBoard gb, Integer[] loc){
         board = gb;
         level = loc[0];
-        validRooms = getAllRooms(5);
+        validRooms = getAllRooms(4);
         location = loc; // sets the starting location to a random room from startingRooms
         name = "BK"; //set name
     }
@@ -130,9 +144,9 @@ class Blinker extends Creature {
      * Adds all possible rooms the creature can inhabit to their validRooms attribute
      * @param numLevels - The number of levels inside the facility
     */
-    public ArrayList<Integer[]> getAllRooms(int numLevels) {
+    private ArrayList<Integer[]> getAllRooms(int numLevels) {
         ArrayList<Integer[]> allRooms = new ArrayList<Integer[]>();
-        for (int i = 1; i < numLevels; i++) {
+        for (int i = 1; i <= numLevels; i++) {
             for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < 3; k++) {
                     Integer[] currRoom = {i, j, k};
@@ -141,18 +155,5 @@ class Blinker extends Creature {
             }
         }
         return allRooms;
-    }
-
-    public void move(){
-        int validRoomIndex = getRandInt(validRooms.size());
-        if (Arrays.equals(location, validRooms.get(validRoomIndex))) {
-            move(); // if the previous location is equal to the new location at validRoomIndex, call the function again. (it wouldn't go anywhere otherwise)
-
-        }
-        else {
-            board.getCurrentRoom(location).removeCreature(this); // removes the creature from the room it's about to leave
-            location = validRooms.get(validRoomIndex); // sets location to the new location at validRoomIndex
-            board.getCurrentRoom(location).addCreature(this); //add to new location
-        }
     }
 }

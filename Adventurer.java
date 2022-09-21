@@ -3,13 +3,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 abstract class Adventurer {
-    GameBoard board;
-    Integer[] location = {0, 1, 1};
-    int health = 3;
-    int treasure = 0;
-    String name;
-
-    int turns = 1;
+    // ENCAPSULATION: Adventurer's attributes are only accessible within subclasses and their package
+    protected GameBoard board;
+    protected Integer[] location;
+    protected int health = 3;
+    protected int treasure = 0;
+    protected String name;
+    protected int turns = 1;
 
     /**
      * @param upperbound
@@ -44,7 +44,7 @@ abstract class Adventurer {
         int randInt = getRandInt(validDirections.size());                        // chooses a random index to get a direction
         String chosenDirection = validDirections.get(randInt);
         board.getCurrentRoom(location).removeAdventurer(this);                   // removes the adventurer from the previous room before updating location
-        location = adjRooms.get(chosenDirection);// updates location
+        location = adjRooms.get(chosenDirection);                                // updates location
         board.getCurrentRoom(location).addAdventurer(this);                      // adds the adventurer to the room associated with location
     }
 
@@ -57,7 +57,8 @@ abstract class Adventurer {
     }
 
     /**
-     * Rolls two dice (1-6). If their sum is greater than 10, add treasure to the current adventurer
+     * Rolls two dice (1-6). If their sum is greater than 10 AND the current room has treasure, add treasure to the current adventurer
+     * @param curRoom - A room object, needed to check whether treasure exists there or not
     */
     public int loot(Room curRoom) {
         if(curRoom.hasTreasure == true) {
@@ -73,6 +74,7 @@ abstract class Adventurer {
 
 }
 
+// INHERITANCE: All the subclasses that extend Adventurer
 /**
  * An adventurer who gets +2 to each dice roll when fighting
 */
@@ -89,10 +91,9 @@ class Brawler extends Adventurer {
 }
 
 /**
- * An adventurer who has a 50% chance not to fight creatures found in their room (implement this somewhere else)
+ * An adventurer who has a 50% chance not to fight creatures found in their room (implemented in GameRunner adventurerAction())
 */
 class Sneaker extends Adventurer {
-
     Sneaker(GameBoard gb, Integer[] loc) {
         board = gb;
         name = "S";
@@ -101,7 +102,7 @@ class Sneaker extends Adventurer {
 }
 
 /**
- * An adventurer who gets to perform two actions per turn (implement this somewhere else)
+ * An adventurer who gets to perform two actions per turn
 */
 class Runner extends Adventurer {
     Runner(GameBoard gb, Integer[] loc) {

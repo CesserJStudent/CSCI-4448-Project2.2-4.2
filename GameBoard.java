@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.lang.*;
+
+// COHESION: The GameBoard class has high cohesion since its only purpose is to initialize the board, print the board, and get information on a Room within the board
 public class GameBoard {
 
     ArrayList<ArrayList<ArrayList<Room>>> board = new ArrayList<>();
@@ -127,6 +129,7 @@ public class GameBoard {
         return board.get(currRoom[0]).get(currRoom[1]).get(currRoom[2]);
     }
 
+    // ABSTRACTION: Instead of calling the return statement each time, getAdjacentRooms is an abstraction provides the same functionality with more readability
     /**
     * @param currRoom - An integer array representing the current room. i.e {1, 1, 2} = 1-1-2 = board[1][1][2]
     * @return A HashMap containing all adjacent rooms to currRoom. Keys are direction and values are integer arrays representing the room's location

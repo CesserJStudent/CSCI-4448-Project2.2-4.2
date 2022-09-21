@@ -18,7 +18,7 @@ public class GameRunner {
         return randInt.nextInt(upperbound);
     }
     public void placePlayers(){
-        //System.out.println("Hello! Welcome to RotLA. This key will help you get to know the characters. B = Brwaler, S = Sneaker, R = Runner, T = Thief, OB = Orbiter, SK = Seeker, and BK = Blinker. The game will now begin.");
+        //System.out.println("Hello! Welcome to RotLA. This key will help you get to know the characters. B = Brawler, S = Sneaker, R = Runner, T = Thief, OB = Orbiter, SK = Seeker, and BK = Blinker. The game will now begin.");
         Integer[] startI = new Integer[]{0, 1, 1};
         Room startR = playSpace.getCurrentRoom(startI);
         //add Adventurers to start room
@@ -140,7 +140,7 @@ public class GameRunner {
             Creature curCre = aliveCreatures.get(i); //get current creature
             Room curRoom = curCre.board.getCurrentRoom(curCre.location); //get location
             if(curCre.name == "BK" || curCre.name == "OB" && !curRoom.checkForAdventurer()) { //if needed move
-                curCre.move();
+                curCre.move();      // POLYMORPHISM: move() is called with the same name, but performs differently depending on which creature it's applied to
             }
             else if(curCre.name == "SK") {
                 curCre.move();
@@ -182,7 +182,7 @@ public class GameRunner {
                 curAdv.move();
                 curRoom = curAdv.board.getCurrentRoom(curAdv.location);
                 if (curRoom.checkForCreature()) {
-                    if(getRandInt(1) == 0) { //50 percent chance not to fight
+                    if(getRandInt(2) == 0) { //50 percent chance not to fight
                         fightCreature(curAdv, curRoom);
                     }
                 }

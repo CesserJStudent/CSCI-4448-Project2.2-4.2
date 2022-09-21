@@ -1,4 +1,4 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
+// import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -18,23 +18,43 @@ public class Room {
         adjacent.put("Below", below);
     }
 
+    /**
+     * Adds an adventurer to a room
+     * @param adv The Adventurer object to be added.
+    */
     public void addAdventurer(Adventurer adv) {
         adventurersPresent.add(adv);
-    } //adds adventurer to room
+    }
 
+    /**
+     * Adds a creature to a room
+     * @param cre The Creature object to be added.
+    */
     public void addCreature(Creature cre) {
         creaturesPresent.add(cre);
-    } //adds creature to room
+    }
 
+    /**
+     * Removes an adventurer from a room
+     * @param adv The Adventurer object to be removed.
+    */
     public void removeAdventurer(Adventurer adv) {
         adventurersPresent.remove(adv); //removes adventurer from room
     }
 
+    /**
+     * Removes a creature from a room
+     * @param cre The Creature object to be removed.
+    */
     public void removeCreature(Creature cre) {
         creaturesPresent.remove(cre); //removes creature from room
     }
 
-    public boolean checkForAdventurer() { //checks if room has adventurer
+    /**
+     * Checks if a room has an adventurer
+     * @return A boolean that's true if the room has an adventurer, otherwise false.
+    */
+    public boolean checkForAdventurer() {
         if (adventurersPresent.isEmpty()){
             return false;
         }
@@ -43,7 +63,11 @@ public class Room {
         }
     }
 
-    public boolean checkForCreature() { //checks if room has creature
+    /**
+     * Checks if a room has an creature
+     * @return A boolean that's true if the room has an creature, otherwise false.
+    */
+    public boolean checkForCreature() {
         if (creaturesPresent.isEmpty()){
             return false;
         }
