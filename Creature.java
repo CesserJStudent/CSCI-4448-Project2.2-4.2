@@ -5,7 +5,6 @@ import java.util.Random;
 
 abstract class Creature {
     protected GameBoard board;
-    protected int level;
     protected ArrayList<Integer[]> validRooms;
     protected Integer[] location;
     protected String name;
@@ -55,9 +54,9 @@ abstract class Creature {
 
         }
         else {
-            board.getCurrentRoom(location).removeCreature(this); // removes the creature from the room it's about to leave
+            board.getRoomAt(location).removeCreature(this); // removes the creature from the room it's about to leave
             location = validRooms.get(validRoomIndex); // sets location to the new location at validRoomIndex
-            board.getCurrentRoom(location).addCreature(this); //add to new location
+            board.getRoomAt(location).addCreature(this); //add to new location
         }
     }
 }
@@ -68,8 +67,7 @@ abstract class Creature {
 class Orbiter extends Creature {
     Orbiter(GameBoard gb, Integer[] loc) {
         board = gb;
-        level = loc[0];
-        validRooms = getValidRooms(level);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
+        validRooms = getValidRooms(loc[0]);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
         location = loc;  // sets the starting location to a random valid room
         name = "OB"; //set name
     }
@@ -91,8 +89,7 @@ class Orbiter extends Creature {
 class Seeker extends Creature {
     Seeker(GameBoard gb, Integer[] loc){
         board = gb;
-        level = loc[0];
-        validRooms = getValidRooms(level);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
+        validRooms = getValidRooms(loc[0]);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
         location = loc;  // sets the starting location to a random valid room
         name = "SK"; //set name
     }
@@ -106,7 +103,7 @@ class Seeker extends Creature {
         HashMap<String, Integer[]> adjRooms = board.getAdjacentRooms(location);  // gets all adjacent rooms using a HashMap
         for (String i : adjRooms.keySet()) {                                     // traverses the adjRooms HashMap. i is set to the key each loop
             if (adjRooms.get(i) != null && i != "Above" && i != "Below") {       // checks if the value associated with the key isn't null, as well as making sure the room isn't on another level
-                Boolean adventurerPresent = board.getCurrentRoom(adjRooms.get(i)).checkForAdventurer(); // checks for adventurers in the current adjacent room
+                Boolean adventurerPresent = board.getRoomAt(adjRooms.get(i)).hasAdventurer(); // checks for adventurers in the current adjacent room
                 if (adventurerPresent) {
                     possibleRooms.add(adjRooms.get(i)); // adds the adjacent room to possibleRooms if an adventurer was found
                 }
@@ -123,10 +120,10 @@ class Seeker extends Creature {
     public void move(){
         ArrayList<Integer[]> possibleRooms = getPossibleRooms();
         if (possibleRooms != null) {
-            board.getCurrentRoom(location).removeCreature(this);    // removes the creature from the room it's about to leave
+            board.getRoomAt(location).removeCreature(this);    // removes the creature from the room it's about to leave
             int validRoomIndex = getRandInt(possibleRooms.size());
             location = possibleRooms.get(validRoomIndex);           // updates the creature's location and adds it to the room associated with location
-            board.getCurrentRoom(location).addCreature(this);
+            board.getRoomAt(location).addCreature(this);
         }
     }
 }
@@ -134,7 +131,6 @@ class Seeker extends Creature {
 class Blinker extends Creature {
     Blinker(GameBoard gb, Integer[] loc){
         board = gb;
-        level = loc[0];
         validRooms = getAllRooms(4);
         location = loc; // sets the starting location to a random room from startingRooms
         name = "BK"; //set name

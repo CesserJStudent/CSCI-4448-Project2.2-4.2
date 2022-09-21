@@ -9,7 +9,6 @@ abstract class Adventurer {
     protected int health = 3;
     protected int treasure = 0;
     protected String name;
-    protected int turns = 1;
 
     /**
      * @param upperbound
@@ -43,9 +42,9 @@ abstract class Adventurer {
         ArrayList<String> validDirections = getValidDirections(adjRooms);        // creates an ArrayList of strings containing all valid directions that can be traveled all possible values are ("Up", "Down", "Right", "Left", "Above", "Below")
         int randInt = getRandInt(validDirections.size());                        // chooses a random index to get a direction
         String chosenDirection = validDirections.get(randInt);
-        board.getCurrentRoom(location).removeAdventurer(this);                   // removes the adventurer from the previous room before updating location
+        board.getRoomAt(location).removeAdventurer(this);                   // removes the adventurer from the previous room before updating location
         location = adjRooms.get(chosenDirection);                                // updates location
-        board.getCurrentRoom(location).addAdventurer(this);                      // adds the adventurer to the room associated with location
+        board.getRoomAt(location).addAdventurer(this);                      // adds the adventurer to the room associated with location
     }
 
     /**
@@ -109,7 +108,6 @@ class Runner extends Adventurer {
         board = gb;
         name = "R";
         location = loc;
-        turns = 2;
     }
 }
 

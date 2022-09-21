@@ -121,28 +121,11 @@ public class GameBoard {
         }
     }
 
-    /**
-    * @param currRoom - An integer array representing the current room. i.e {1, 1, 2} = 1-1-2 = board[1][1][2]
-    * @return The Room object that currRoom was representing
-    */
-    public Room getCurrentRoom(Integer[] currRoom){
-        return board.get(currRoom[0]).get(currRoom[1]).get(currRoom[2]);
-    }
-
-    // ABSTRACTION: Instead of calling the return statement each time, getAdjacentRooms is an abstraction provides the same functionality with more readability
-    /**
-    * @param currRoom - An integer array representing the current room. i.e {1, 1, 2} = 1-1-2 = board[1][1][2]
-    * @return A HashMap containing all adjacent rooms to currRoom. Keys are direction and values are integer arrays representing the room's location
-    */
-    HashMap<String, Integer[]> getAdjacentRooms(Integer[] currRoom){
-        return board.get(currRoom[0]).get(currRoom[1]).get(currRoom[2]).adjacent;
-    }
-
     public void printBoard(){
         System.out.println("Level " + 0); //level 0 only has one room so special case
         System.out.printf("0-1-1: ");
-        Room curRoom= getCurrentRoom(new Integer[]{0, 1, 1});
-        if (curRoom.checkForAdventurer()) { //see if adventurers in first room
+        Room curRoom= getRoomAt(new Integer[]{0, 1, 1});
+        if (curRoom.hasAdventurer()) { //see if adventurers in first room
             for (int a = 0; a < curRoom.adventurersPresent.size(); a++) {
                 System.out.printf(curRoom.adventurersPresent.get(a).name + " "); //print the adventurer's name
             }
@@ -157,9 +140,9 @@ public class GameBoard {
             for (int j = 0; j < board.get(i).size(); j++) {
                 for (int k = 0; k < board.get(i).get(j).size(); k++) {
                     System.out.printf("   "+ i + "-" + j + "-" + k + " "); //print the room number
-                    curRoom = getCurrentRoom(new Integer[]{i, j, k}); //get the room object
+                    curRoom = getRoomAt(new Integer[]{i, j, k}); //get the room object
 
-                    if (curRoom.checkForAdventurer()) { //check if adventurer is in room
+                    if (curRoom.hasAdventurer()) { //check if adventurer is in room
                         for (int a = 0; a < curRoom.adventurersPresent.size(); a++) {
                             System.out.printf(curRoom.adventurersPresent.get(a).name + " "); //print the adventurer's name
                         }
@@ -170,7 +153,7 @@ public class GameBoard {
 
                     System.out.printf(": ");
 
-                    if (curRoom.checkForCreature()) { //check if adventurer is in room
+                    if (curRoom.hasCreature()) { //check if adventurer is in room
                         for (int a = 0; a < curRoom.creaturesPresent.size(); a++) {
                             System.out.printf(curRoom.creaturesPresent.get(a).name + " "); //print the adventurer's name
                         }
@@ -183,5 +166,22 @@ public class GameBoard {
                 System.out.printf("\n");
             }
         }
+    }
+
+    /**
+    * @param currRoom - An integer array representing the current room. i.e {1, 1, 2} = 1-1-2 = board[1][1][2]
+    * @return The Room object that currRoom was representing
+    */
+    public Room getRoomAt(Integer[] currRoom){
+        return board.get(currRoom[0]).get(currRoom[1]).get(currRoom[2]);
+    }
+
+    // ABSTRACTION: Instead of calling the return statement each time, getAdjacentRooms is an abstraction provides the same functionality with more readability
+    /**
+    * @param currRoom - An integer array representing the current room. i.e {1, 1, 2} = 1-1-2 = board[1][1][2]
+    * @return A HashMap containing all adjacent rooms to currRoom. Keys are direction and values are integer arrays representing the room's location
+    */
+    HashMap<String, Integer[]> getAdjacentRooms(Integer[] currRoom){
+        return board.get(currRoom[0]).get(currRoom[1]).get(currRoom[2]).adjacent;
     }
 }
