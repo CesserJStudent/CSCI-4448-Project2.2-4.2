@@ -44,6 +44,7 @@ public class GameRunner {
                 z = getRandInt(3);
             }
             Integer[] curLoc = new Integer[]{x, y, z};
+            // IDENTITY: Even though multiple Orbiter objects are added with the same name "ob", each one has its own unique identity to distinguish itself from others.
             Orbiter ob = new Orbiter(playSpace, curLoc);
             playSpace.getRoomAt(curLoc).addCreature(ob); // add orbiter to board
             aliveCreatures.add(ob); //add orbiter to aliveCreatures
