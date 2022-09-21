@@ -15,6 +15,8 @@ OpenJDK 64-Bit Server VM (build 17.0.4+8-Ubuntu-120.04, mixed mode, sharing)
 
 ## Assumptions:  
 - Since Orbiters were specified to "circle the outer Rooms of the level they are on, whether connected or not," Orbiter movement simply chooses a different outer room on its current level and moves there.  
+- Since the game was ending very easily when rooms were able to be looted multiple times, treasure is not able to be found in the same roon more than once.
+- At the begninning of the game a key was put in so Adventurer's and Creature's could easily be distingusidhed. 
 
 ## RotLA UML Diagram update:  
 ![RotLA UML diagram v1.2](RotLA_UML_v1.2.png)  
