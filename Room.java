@@ -8,6 +8,8 @@ public class Room {
     Boolean hasTreasure = true; //if room has treasure
     HashMap<String, Integer[]> adjacent = new HashMap<String, Integer[]>(); //hash map holds direction elements
 
+    Treasure treasure = null; //treasure in room if any
+
     Room(Integer[] up, Integer[] down, Integer[] right, Integer[] left, Integer[] above, Integer[] below) {
         adjacent.put("Up", up);
         adjacent.put("Down", down);
