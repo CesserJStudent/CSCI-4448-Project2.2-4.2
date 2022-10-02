@@ -8,7 +8,22 @@ abstract class Adventurer {
     protected Integer[] location;
     protected int health = 3;
     protected int treasure = 0;
+    protected Boolean armed = false;
+    protected Boolean cursed = false;
+    protected Boolean armor = false;
     protected String name;
+    protected ArrayList <Treasure> ownedTreasures = new ArrayList <Treasure>();
+    protected Combat combat = null;
+    protected Search search = null;
+
+
+    HashMap<String, Boolean> treasures = new HashMap<String, Boolean>() {{
+        put("Sword", false);
+        put("Gem", false);
+        put("Armor", false);
+        put("Potion", false);
+    }};
+
 
     /**
      * @param upperbound
@@ -44,35 +59,11 @@ abstract class Adventurer {
         String chosenDirection = validDirections.get(randInt);
         board.getRoomAt(location).removeAdventurer(this);                   // removes the adventurer from the previous room before updating location
         location = adjRooms.get(chosenDirection);                                // updates location
-        board.getRoomAt(location).addAdventurer(this);                      // adds the adventurer to the room associated with location
-    }
-
-    /**
-     * @return The sum of two 1-6 dice rolls
-    */
-    public int fight() {
-        // getRandInt is called twice to simulate two dice rolls
-        return ((getRandInt(6) + 1) + (getRandInt(6) + 1));
-    }
-
-    /**
-     * Rolls two dice (1-6). If their sum is greater than 10 AND the current room has treasure, add treasure to the current adventurer
-     * @param curRoom - A room object, needed to check whether treasure exists there or not
-    */
-    public int loot(Room curRoom) {
-        if(curRoom.hasTreasure == true) {
-            int lootCheck = (getRandInt(6) + 1) + (getRandInt(6) + 1);
-            if (lootCheck >= 10) {
-                treasure++;
-                curRoom.hasTreasure = false;
-                return(1);
-            }
-        }
-        return(0);
+        board.getRoomAt(location).addAdventurer(this);
+        // adds the adventurer to the room associated with location
     }
 
 }
-
 // INHERITANCE: All the subclasses that extend Adventurer
 /**
  * An adventurer who gets +2 to each dice roll when fighting
@@ -82,11 +73,9 @@ class Brawler extends Adventurer {
         board = gb;
         name = "B";
         location = loc;
+        combat = new Expert();
+        search = new Careless();
     }
-    public int fight() {
-        // adds an extra +2 to each dice roll since this is a Brawler
-        return ((getRandInt(6) + 3) + (getRandInt(6) + 3));
-    };
 }
 
 /**
@@ -97,6 +86,8 @@ class Sneaker extends Adventurer {
         board = gb;
         name = "S";
         location = loc;
+        combat = new Stealth();
+        search = new Quick();
     }
 }
 
@@ -108,6 +99,8 @@ class Runner extends Adventurer {
         board = gb;
         name = "R";
         location = loc;
+        combat = new Untrained();
+        search = new Quick();
     }
 }
 
@@ -119,23 +112,7 @@ class Thief extends Adventurer {
         board = gb;
         name = "T";
         location = loc;
-    }
-
-    public int fight() {
-        // adds +1 to the sum of the two dice rolls
-        return ((getRandInt(6) + 1) + (getRandInt(6) + 1)) + 1;
-    }
-
-    public int loot(Room curRoom) {
-        // adds +1 to the sum of the two rolls
-        if(curRoom.hasTreasure == true) {
-            int lootCheck = (getRandInt(6) + 1) + (getRandInt(6) + 1) + 1;
-            if (lootCheck >= 10) {
-                treasure++;
-                curRoom.hasTreasure = false;
-                return (1);
-            }
-        }
-        return(0);
+        combat = new Trained();
+        search = new Careful();
     }
 }

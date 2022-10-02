@@ -6,6 +6,7 @@ import java.lang.*;
 public class GameBoard {
 
     ArrayList<ArrayList<ArrayList<Room>>> board = new ArrayList<>();
+    ArrayList<Treasure> unFoundTreasures = new ArrayList<Treasure>(); //list of unfound treasures
 
     public void init_game(int x_axis, int y_axis, int z_axis) {
         for (Integer i = 0; i < x_axis; i++) {
@@ -153,13 +154,20 @@ public class GameBoard {
 
                     System.out.printf(": ");
 
-                    if (curRoom.hasCreature()) { //check if adventurer is in room
+                    if (curRoom.hasCreature()) { //check if creature is in room
                         for (int a = 0; a < curRoom.creaturesPresent.size(); a++) {
                             System.out.printf(curRoom.creaturesPresent.get(a).name + " "); //print the adventurer's name
                         }
                     }
                     else {
-                        System.out.printf("- "); //print - if no adventurer is in room
+                        System.out.printf("- "); //print - if no creature is in room
+                    }
+
+                    if (curRoom.treasure != null) { //check if creature is in room
+                        System.out.printf(curRoom.treasure.name); //print the adventurer's name
+                    }
+                    else {
+                        System.out.printf("- "); //print - if no creature is in room
                     }
 
                 }

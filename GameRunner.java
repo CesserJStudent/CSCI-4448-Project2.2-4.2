@@ -7,6 +7,7 @@ public class GameRunner {
     ArrayList<Adventurer> aliveAdventurers = new ArrayList<Adventurer>(); //list of alive adventurers
     ArrayList<Creature> aliveCreatures = new ArrayList<Creature>(); //list of alive creatures
 
+
     int loot = 0;
 
     /**
@@ -16,6 +17,11 @@ public class GameRunner {
     static public int getRandInt(int upperbound) {
         Random randInt = new Random();
         return randInt.nextInt(upperbound);
+    }
+
+    static public Integer[] getRandRoom() {
+        Integer[] room = {getRandInt(4) + 1, getRandInt(3), getRandInt(3)};
+        return room;
     }
     public void placePlayers(){
         //System.out.println("Hello! Welcome to RotLA. This key will help you get to know the characters. B = Brawler, S = Sneaker, R = Runner, T = Thief, OB = Orbiter, SK = Seeker, and BK = Blinker. The game will now begin.");
@@ -49,10 +55,7 @@ public class GameRunner {
             playSpace.getRoomAt(curLoc).addCreature(ob); // add orbiter to board
             aliveCreatures.add(ob); //add orbiter to aliveCreatures
 
-            x = getRandInt(4) + 1; //set x for seeker placement
-            y = getRandInt(3); //set y for seeker placement
-            z = getRandInt(3); //set z for seeker placement
-            curLoc = new Integer[]{x, y, z};
+            curLoc = getRandRoom(); //get random room for seeker placement
             Seeker sk = new Seeker(playSpace, curLoc);
             playSpace.getRoomAt(curLoc).addCreature(sk); // add Seeker to board
             aliveCreatures.add(sk); //add Seeker to aliveCreatures
@@ -66,24 +69,62 @@ public class GameRunner {
 
         }
 
+
         for (int i = 0; i < 4; i++) { //add adventurers to aliveAdventurers
             aliveAdventurers.add(startR.adventurersPresent.get(i));
         }
 
     }
 
-    /**
-     * @param adv The adventurer who is fighting
-     * @param cre The creature who is fighting
-     * @return A Boolean value representing whether the adventurer won the fight
-     */
-    public Boolean checkFightCreature(Adventurer adv, Creature cre) {
-        if (adv.fight() > cre.fight()) {
-            return true;
+    public Integer[] randAndCheckTreasure() {
+        Integer[] room = getRandRoom();
+        Room curRoom = playSpace.getRoomAt(room);
+        if (curRoom.treasure == null) {
+            return room;
         }
         else {
-            return false;
+            return randAndCheckTreasure();
         }
+    }
+
+    public void placeTreasure() {
+        Integer[] curLoc;
+
+        for (int i = 0; i < 4; i++) {
+            curLoc = randAndCheckTreasure(); //get random room for Sword placement
+            Treasure curTres = playSpace.getRoomAt(curLoc).treasure = new Sword();
+            playSpace.unFoundTreasures.add(curTres);
+
+            curLoc = randAndCheckTreasure(); //get random room for Gem placement
+            curTres = playSpace.getRoomAt(curLoc).treasure = new Gem();
+            playSpace.unFoundTreasures.add(curTres);
+
+            curLoc = randAndCheckTreasure(); //get random room for Armor placement
+            curTres = playSpace.getRoomAt(curLoc).treasure = new Armor();
+            playSpace.unFoundTreasures.add(curTres);
+
+            curLoc = randAndCheckTreasure(); //get random room for Trap placement
+            curTres =playSpace.getRoomAt(curLoc).treasure = new Trap();
+            playSpace.unFoundTreasures.add(curTres);
+
+            curLoc = randAndCheckTreasure(); //get random room for Potion placement
+            curTres = playSpace.getRoomAt(curLoc).treasure = new Potion();
+            playSpace.unFoundTreasures.add(curTres);
+
+            curLoc = randAndCheckTreasure(); //get random room for Portal placement
+            curTres = playSpace.getRoomAt(curLoc).treasure = new Portal();
+            playSpace.unFoundTreasures.add(curTres);
+        }
+    }
+
+    public Boolean checkAndRunPortal(Adventurer adv) {
+        for(int i = 0; i < adv.ownedTreasures.size(); i++) {
+            if (adv.ownedTreasures.get(i) instanceof Portal) {
+                adv.ownedTreasures.get(i).treasureAction(adv);
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -91,25 +132,23 @@ public class GameRunner {
      * @param curRoom The creature who is fighting
      * @return A Boolean value representing whether the dies
      */
-    public Boolean fightCreature(Adventurer curAdv, Room curRoom) {
-            for(int z =0; z < curRoom.creaturesPresent.size(); z++) {
-                Creature curCre = curRoom.creaturesPresent.get(z);
-                if (checkFightCreature(curAdv, curCre)) {
-                    curRoom.removeCreature(curCre);
-                    aliveCreatures.remove(curCre);
+    public void fightCreature(Adventurer curAdv, Room curRoom) {
+        for(int z =0; z < curRoom.creaturesPresent.size(); z++) { //get all creatures in the room
+            Creature curCre = curRoom.creaturesPresent.get(z);
+            Boolean winner = curAdv.combat.fight(curAdv, curCre);
+            if (winner != null && winner == true) { //if adventurer wins
+                //if adventurer wins eliminate creature
+                curRoom.removeCreature(curCre);;
+                aliveCreatures.remove(curCre);
                 }
-                else {
-                    curAdv.health -= 1;
-                }
+            else if (winner != null) { //if creature wins
+                curAdv.health -= 1; //if adventurer loses, reduce health by 1
             }
-            if (curAdv.health <= 0) {
-                curRoom.removeAdventurer(curAdv);
-                aliveAdventurers.remove(curAdv);
-                return false;
-            }
-            else {
-                return true;
-            }
+        }
+        if (curAdv.health <= 0) { //if adventurer dies, remove from aliveAdventurers and room
+            curRoom.removeAdventurer(curAdv);
+            aliveAdventurers.remove(curAdv);
+        }
     }
 
     /**
@@ -118,13 +157,14 @@ public class GameRunner {
      * @return A Boolean value representing whether the adventurer dies
      */
     public void fightAdventurer(Creature curCre, Room curRoom) {
-        for(int z =0; z < curRoom.adventurersPresent.size(); z++) { //get all advernuters in the room
+       for(int z =0; z < curRoom.adventurersPresent.size(); z++) { //get all advernuters in the room
             Adventurer curAdv = curRoom.adventurersPresent.get(z);
-            if (checkFightCreature(curAdv, curCre)) { //if adventurer wins eliminate creature
+           Boolean winner = curAdv.combat.fight(curAdv, curCre);
+            if (winner != null && winner == true) { //if adventurer wins eliminate creature
                 curRoom.removeCreature(curCre);
                 aliveCreatures.remove(curCre);
             }
-            else {
+            else if(winner != null) { //if creature wins
                 curAdv.health -= 1; //if adventurer loses, reduce health by 1
             }
 
@@ -152,55 +192,35 @@ public class GameRunner {
             }
         }
     }
+    public void adventurerTurn(Adventurer curAdv, Room curRoom) {
+        if (curAdv.getRandInt(3) == 1) { // 1/3% chance to use portal if owned
+            if (!checkAndRunPortal(curAdv)) {
+                curAdv.move(); //move adventurer
+            }
+        }
+        else {
+            curAdv.move(); //move adventurer
+        }
+        curRoom = curAdv.board.getRoomAt(curAdv.location);
+        if (curRoom.hasCreature()) {
+            fightCreature(curAdv, curRoom);
+        }
+        else {
+            curAdv.search.loot(curAdv, curRoom);
 
+        }
+    }
     public void adventurerAction() {
         for (int i = 0; i < aliveAdventurers.size(); i++) { //check for alive adventurers
             Adventurer curAdv = aliveAdventurers.get(i);
             Room curRoom = curAdv.board.getRoomAt(curAdv.location);
             if (curAdv.name == "R") { //if runner move twice
-                curAdv.move();
-                curRoom = curAdv.board.getRoomAt(curAdv.location);
-                if (curRoom.hasCreature()) {
-                    fightCreature(curAdv, curRoom);
-                }
-                else {
-                    loot += curAdv.loot(curRoom);
-
-                }
-
+                adventurerTurn(curAdv, curRoom);
                 //Second move
-                curAdv.move();
-                curRoom = curAdv.board.getRoomAt(curAdv.location);
-                if (curRoom.hasCreature()) {
-                    fightCreature(curAdv, curRoom);
-                }
-                else {
-                    loot += curAdv.loot(curRoom);
-                }
+                adventurerTurn(curAdv, curRoom);
             }
-            //if sneaker 50 percent chance to avoid fighting
-            else if (curAdv.name == "S") {
-                curAdv.move();
-                curRoom = curAdv.board.getRoomAt(curAdv.location);
-                if (curRoom.hasCreature()) {
-                    if(getRandInt(2) == 0) { //50 percent chance not to fight
-                        fightCreature(curAdv, curRoom);
-                    }
-                }
-                else {
-                    loot += curAdv.loot(curRoom);
-                }
-            }
-
-            else if (curAdv.name == "B" || curAdv.name == "T") { //brawler and thief are normal
-                curAdv.move();
-                curRoom = curAdv.board.getRoomAt(curAdv.location);
-                if (curRoom.hasCreature()) {
-                    fightCreature(curAdv, curRoom);
-                }
-                else {
-                    loot += curAdv.loot(curRoom);
-                }
+            else { //otherwise single turn
+                adventurerTurn(curAdv, curRoom);
             }
         }
     }
@@ -221,7 +241,7 @@ public class GameRunner {
             System.out.printf("All Adventurers eliminated \n");
             return true;
         }
-        else if (loot >= 10) { //game over if treasure is collected
+        else if (playSpace.unFoundTreasures.size() == 0) { //game over if treasure is collected
             System.out.printf("All treasure found \n");
             return true;
         }
@@ -238,7 +258,7 @@ public class GameRunner {
         //print stats for Adventurers
         for(int i = 0; i < aliveAdventurers.size(); i++) {
             Adventurer curAdv = aliveAdventurers.get(i);
-            System.out.println(curAdv.name + " has " + curAdv.health + " health and " + curAdv.treasure + " treasure.");
+            System.out.println(curAdv.name + " has " + curAdv.health + " health and " + curAdv.ownedTreasures + " treasure.");
         }
 
         int obC = 0;
@@ -261,26 +281,31 @@ public class GameRunner {
         System.out.println("OB: " + obC + " Remaining");
         System.out.println("SK: " + skC + " Remaining");
         System.out.println("BK: " + bkC + " Remaining");
-        System.out.println("Total Treasure: " + loot);
+        System.out.println("Total Treasure: " + playSpace.unFoundTreasures.size());
     }
     public void runGame() {
         playSpace.init_game(5, 3, 3); //init game
         placePlayers(); //place players
+        placeTreasure(); //place treasure
         Boolean gO = false; //game over set to false
+        System.out.println("Hello! Welcome to RotLA. This key will help you get to know the characters. B = Brawler, S = Sneaker, R = Runner, T = Thief, OB = Orbiter, SK = Seeker, and BK = Blinker. The game will now begin.");
+        playSpace.printBoard();
         while (!gO) {
             actionRunner(); //run actions
-            //playSpace.printBoard(); //print board
-            //printStats(); //print stats
+            playSpace.printBoard(); //print board
+            printStats(); //print stats
             gO = gameOver(); //check if game is over
         }
     }
 
 
     public static void main(String[] args) {
-        for(int i = 0; i  < 30; i++) {
+        /* for(int i = 0; i  < 30; i++) {
             System.out.printf("Game " + i + ": ");
             GameRunner game = new GameRunner();
             game.runGame();
-        }
+        } */
+        GameRunner game = new GameRunner();
+        game.runGame();
     }
 }
