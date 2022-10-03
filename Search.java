@@ -1,6 +1,4 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-
+// import com.sun.org.apache.xpath.internal.operations.Bool;
 public class Search {
     String name;
     int roll = 0;
@@ -16,7 +14,8 @@ public class Search {
         return false;
     }
 
-    public void loot(Adventurer adv, Room room) {
+    public Boolean loot(Adventurer adv, Room room) {
+        Boolean treasureFound = false;
         if (room.treasure != null) {
             Treasure curTres = room.treasure;
             if(!checkForTrap(room, adv)) {
@@ -25,14 +24,14 @@ public class Search {
                     adv.ownedTreasures.add(curTres);
                     adv.board.unFoundTreasures.remove(curTres);
                     room.treasure = null;
+                    treasureFound = true;
                     if(curTres.name != "Portal") {
                         curTres.treasureAction(adv);
                     }
-
                 }
-
             }
         }
+        return treasureFound;
     }
 }
 
@@ -44,7 +43,8 @@ class Careful extends Search {
     }
 
     @Override
-    public void loot(Adventurer adv, Room room) {
+    public Boolean loot(Adventurer adv, Room room) {
+        Boolean treasureFound = false;
         if (room.treasure != null) {
             Treasure curTres = room.treasure;
             if(!checkForTrap(room, adv)) {
@@ -53,13 +53,14 @@ class Careful extends Search {
                     adv.ownedTreasures.add(curTres);
                     adv.board.unFoundTreasures.remove(curTres);
                     room.treasure = null;
+                    treasureFound = true;
                     if(curTres.name != "Portal") {
                         curTres.treasureAction(adv);
                     }
                 }
-
             }
         }
+        return treasureFound;
     }
 }
 
@@ -69,7 +70,8 @@ class Quick extends Search {
     }
 
     @Override
-    public void loot(Adventurer adv, Room room) {
+    public Boolean loot(Adventurer adv, Room room) {
+        Boolean treasureFound = false;
         if (Math.random() > 0.33) { // 33% chance of skipping search
             if (room.treasure != null) {
                 Treasure curTres = room.treasure;
@@ -79,6 +81,7 @@ class Quick extends Search {
                         adv.ownedTreasures.add(curTres);
                         adv.board.unFoundTreasures.remove(curTres);
                         room.treasure = null;
+                        treasureFound = true;
                         if(curTres.name != "Portal") {
                             curTres.treasureAction(adv);
                         }
@@ -87,6 +90,7 @@ class Quick extends Search {
                 }
             }
         }
+        return treasureFound;
     }
 }
 

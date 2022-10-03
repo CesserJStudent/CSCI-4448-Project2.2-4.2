@@ -7,7 +7,6 @@ abstract class Adventurer {
     protected GameBoard board;
     protected Integer[] location;
     protected int health = 3;
-    protected int treasure = 0;
     protected Boolean armed = false;
     protected Boolean cursed = false;
     protected Boolean armor = false;
