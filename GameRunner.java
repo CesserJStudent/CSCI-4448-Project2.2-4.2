@@ -1,8 +1,9 @@
-import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
+import java.io.File;
+// import java.util.Scanner;
 
 interface Subject {
     public void registerObserver(Observer obs);
@@ -15,7 +16,7 @@ public class GameRunner implements Subject{
     ArrayList<Adventurer> aliveAdventurers = new ArrayList<Adventurer>();   // list of alive adventurers
     ArrayList<Creature> aliveCreatures = new ArrayList<Creature>();         // list of alive creatures
     ArrayList<Observer> observers = new ArrayList<Observer>();              // list of current observers
-    ArrayList<String> event = new ArrayList<String>();                      // list containing strings needed to describe an event
+    HashMap<String, String> event = new HashMap<String, String>();          // list containing strings needed to describe an event.
     int turn = 1; // the current turn
 
     public void registerObserver(Observer obs) {
@@ -31,57 +32,109 @@ public class GameRunner implements Subject{
             i.update(event);
         }
     }
+    // helper function for addEvent / Tracker
+    private HashMap<String, String> getStatusUpdate(String eventType) {
+        String currentTurn = String.valueOf(turn);
+        String totalAdv = String.valueOf(aliveAdventurers.size());
+        String totalCre = String.valueOf(aliveCreatures.size());
+
+        HashMap<String, String> statusUpdate = new HashMap<String, String>();
+        statusUpdate.put("eventType", eventType);
+        statusUpdate.put("turn", currentTurn);
+        statusUpdate.put("totalAdv", totalAdv);
+        statusUpdate.put("totalCre", totalCre);
+
+        // loop through all active adventurers, adding their information to status update
+        for (int i = 0; i < aliveAdventurers.size(); i++) {
+            Adventurer adv = aliveAdventurers.get(i);
+            String advName = adv.name;
+            String advLocation = Arrays.toString(adv.location);
+            String advHealth = String.valueOf(adv.health);
+            String advTreasure = "";
+            for (int j = 0; j < adv.ownedTreasures.size(); j++) {
+                if (j == adv.ownedTreasures.size() - 1) {    // if the last treasure, don't append a ", " to the end of it
+                    advTreasure += adv.ownedTreasures.get(j).name;
+                }
+                else {
+                    advTreasure += adv.ownedTreasures.get(j).name + ", ";
+                }
+            }
+            statusUpdate.put(advName + "Location", advLocation);
+            statusUpdate.put(advName + "Health", advHealth);
+            statusUpdate.put(advName + "Treasure", advTreasure);
+        }
+
+        // loop through all active creatures, adding their information to status update
+        for (int k = 0; k < aliveCreatures.size(); k++) {
+            Creature cre = aliveCreatures.get(k);
+            String creName = cre.name;
+            String creLocation = Arrays.toString(cre.location);
+            // inserts a creature into statusUpdate with a key like "cre1Name" or "cre12Location". there can be a total of 12 creatures at a time
+            statusUpdate.put("cre" + (k + 1) + "Name", creName);
+            statusUpdate.put("cre" + (k + 1) + "Location", creLocation);
+        }
+        return statusUpdate;
+    }
 
     private void addEvent(String eventType, Adventurer adv, Creature cre) {
         if (!event.isEmpty()) event.clear();          // clears out the past event, if it exists
-        event.add(eventType);                         // adds the event type to "event"
+        event.put("eventType", eventType);       // adds the event type with key "eventType"
         
         switch(eventType) {
-            case "adventurer movement":               // adds the adventurer's name and location
-                event.add(adv.name);
-                event.add(Arrays.toString(adv.location));
+            case "advMove":                 // adds the adventurer's name and location with keys "advName" and "location" respectively
+                event.put("advName", adv.name);
+                event.put("location", Arrays.toString(adv.location));
                 break;
-            case "adventurer combat win":             // adds the adventurer's name and creature's name for both wins and losses
-                event.add(adv.name);
-                event.add(cre.name);
-                addEvent("creature defeated", null, cre); // since this event always follows, recursively call it here
+            case "advWin":                  // adds the adventurer's name and creature's name for both wins and losses. keys are "advName" and "creName"
+                event.put("advName", adv.name);
+                event.put("creName", cre.name);
                 break;
-            case "adventurer combat loss":
-                event.add(adv.name);
-                event.add(cre.name);
-                addEvent("adventurer damaged", adv, null); // since this event always follows, recursively call it here
+            case "advLoss":
+                event.put("advName", adv.name);
+                event.put("creName", cre.name);
                 break;
-            case "adventurer damaged":                // adds the damaged adventurer's name and health
-                event.add(adv.name);
-                event.add(String.valueOf(adv.health));
+            case "advHurt":                 // adds the damaged adventurer's name and health. keys are "advName" and "advHealth"
+                event.put("advName", adv.name);
+                event.put("advHealth", String.valueOf(adv.health));
                 break;
-            case "adventurer defeated":               // adds the defeated adventurer's name to "event"
-                event.add(adv.name);
+            case "advHeal":                 // used when the adventurer finds a potion
+                event.put("advName", adv.name);
+                event.put("advHealth", String.valueOf(adv.health));
                 break;
-            case "celebration":
-                event.add(adv.name);
-                event.add("adventurer celebration message"); // not sure how to add this yet  
+            case "advDeath":                // adds the defeated adventurer's name to "event"
+                event.put("advName", adv.name);
                 break;
-            case "found treasure":
-                event.add(adv.name);
-                event.add(adv.ownedTreasures.get(adv.ownedTreasures.size() - 1).name); // this should work for everything but traps
+            // case "advCelebrate":
+            //     event.add(adv.name);
+            //     event.add("adventurer celebration message"); // not sure how to add this yet  
+            //     break;
+            case "foundTreasure":           // adds the adventurer's name and found treasure's name. keys are "advName" and "treasureName"
+                event.put("advName", adv.name);
+                String foundTreasureName = adv.ownedTreasures.get(adv.ownedTreasures.size() - 1).name;
+                event.put("treasureName", foundTreasureName);
                 break;
-            case "creature movement":                 // creature events are handled the same as adventurer events, except the creature's name is added first
-                event.add(cre.name);
-                event.add(Arrays.toString(cre.location));
+            case "foundTrap":
+                event.put("advName", adv.name);
                 break;
-            case "creature combat win":
-                event.add(cre.name);
-                event.add(adv.name);
-                addEvent("adventurer damaged", adv, null); // since this event always follows, recursively call it here
+            case "creMove":                 // creature events are handled the same as adventurer events. equivalent keys are prefixed with "cre" instead of "adv"
+                event.put("creName", cre.name);
+                event.put("location", Arrays.toString(cre.location));
                 break;
-            case "creature combat loss":
-                event.add(cre.name);
-                event.add(adv.name);
-                addEvent("creature defeated", null, cre);  // since this event always follows, recursively call it here
+            case "creWin":
+                event.put("creName", cre.name);
+                event.put("advName", adv.name);
                 break;
-            case "creature defeated":
-                event.add(cre.name);
+            case "creLoss":
+                event.put("creName", cre.name);
+                event.put("advName", adv.name);
+                break;
+            case "creDeath":
+                event.put("creName", cre.name);
+                break;
+            case "turnEnd":     // used to signal the end of turn. contains all the data needed for tracker
+                event = getStatusUpdate(eventType);
+                break;
+            case "gameEnd":    // used to signal the end of the game. stop condition for tracker
                 break;
             default:
                 event.clear();
@@ -90,6 +143,7 @@ public class GameRunner implements Subject{
         }
         notifyObserver();   // passes this event to all observers
     }
+
     /**
      * @param upperbound
      * @return A random integer between 0 and (upperbound - 1), inclusive
@@ -201,10 +255,19 @@ public class GameRunner implements Subject{
         for(int i = 0; i < adv.ownedTreasures.size(); i++) {
             if (adv.ownedTreasures.get(i) instanceof Portal) {
                 adv.ownedTreasures.get(i).treasureAction(adv);
+                addEvent("advMove", adv, null);
                 return true;
             }
         }
         return false;
+    }
+
+    private void checkForAdvDeath(Adventurer adv, Room room) {
+        if (adv.health <= 0) { //if adventurer dies, remove from aliveAdventurers and room
+            room.removeAdventurer(adv);
+            aliveAdventurers.remove(adv);
+            addEvent("advDeath", adv, null);
+        }
     }
 
     /**
@@ -220,18 +283,16 @@ public class GameRunner implements Subject{
                 //if adventurer wins eliminate creature
                 curRoom.removeCreature(curCre);
                 aliveCreatures.remove(curCre);
-                addEvent("adventurer combat win", curAdv, curCre);
+                addEvent("advWin", curAdv, curCre);
+                addEvent("creDeath", null, curCre); 
             }
             else if (winner != null) { //if creature wins
                 curAdv.health -= 1; //if adventurer loses, reduce health by 1
-                addEvent("adventurer combat loss", curAdv, curCre);
+                addEvent("advLoss", curAdv, curCre);
+                addEvent("advHurt", curAdv, null);
             }
         }
-        if (curAdv.health <= 0) { //if adventurer dies, remove from aliveAdventurers and room
-            curRoom.removeAdventurer(curAdv);
-            aliveAdventurers.remove(curAdv);
-            addEvent("adventurer defeated", curAdv, null);
-        }
+        checkForAdvDeath(curAdv, curRoom);
     }
 
     /**
@@ -246,18 +307,15 @@ public class GameRunner implements Subject{
             if (winner != null && winner == true) { //if adventurer wins eliminate creature
                 curRoom.removeCreature(curCre);
                 aliveCreatures.remove(curCre);
-                addEvent("creature combat loss", curAdv, curCre);
+                addEvent("creLoss", curAdv, curCre);
+                addEvent("creDeath", null, curCre);
             }
             else if(winner != null) { //if creature wins
                 curAdv.health -= 1; //if adventurer loses, reduce health by 1
-                addEvent("creature combat win", curAdv, curCre);
+                addEvent("creWin", curAdv, curCre);
+                addEvent("advHurt", curAdv, null);
             }
-
-            if (curAdv.health <= 0) { //if adventurer dies, remove from aliveAdventurers and room
-                curRoom.removeAdventurer(curAdv);
-                aliveAdventurers.remove(curAdv);
-                addEvent("adventurer defeated", curAdv, null);
-            }
+            checkForAdvDeath(curAdv, curRoom);
         }
     }
 
@@ -269,48 +327,50 @@ public class GameRunner implements Subject{
             if (!curRoom.hasAdventurer()) { //if needed move
                 curCre.move(); // POLYMORPHISM: move() is called with the same name, but performs differently depending on which creature it's applied to
                 Room newRoom = curCre.board.getRoomAt(curCre.location);         // stores location of the room moved to. needed to check for Seeker movement since move() won't always move them if their conditions aren't met
+                if (!newRoom.equals(curRoom)) {
+                    addEvent("creMove", null, curCre); // updates event if "newRoom" and "curRoom" are different rooms. they may be the same if "curCre" is a Seeker.
+                }
                 if (newRoom.hasAdventurer()) {                                  // checks "newRoom" for adventurers and fights them if found
                     fightAdventurer(curCre, newRoom);
-                }
-                if (!newRoom.equals(curRoom)) {
-                    addEvent("creature movement", null, curCre); // updates event if "newRoom" and "curRoom" are different rooms. they may be the same if "curCre" is a Seeker.
                 }
             }
             else {  // else fight
                 fightAdventurer(curCre, curRoom); //fight adventurer
             }
-            // old code
-            // if(curCre.name == "BK" || curCre.name == "OB" && !curRoom.hasAdventurer()) { //if needed move
-            //     curCre.move();      // POLYMORPHISM: move() is called with the same name, but performs differently depending on which creature it's applied to
-            //     addEvent("creature movement", null, curCre);
-            // }
-            // else if(curCre.name == "SK") {
-            //     curCre.move();
-            // }
-            // curRoom = curCre.board.getRoomAt(curCre.location); //get new location
-            // if(curRoom.hasAdventurer()) {
-            //     fightAdventurer(curCre, curRoom); //fight adventurer
-            // }
         }
     }
     public void adventurerTurn(Adventurer curAdv, Room curRoom) {
         if (getRandInt(3) == 1) { // 1/3% chance to use portal if owned
             if (!checkAndRunPortal(curAdv)) {
                 curAdv.move(); //move adventurer
-                addEvent("adventurer movement", curAdv, null);
+                addEvent("advMove", curAdv, null);
             }
         }
         else {
             curAdv.move(); //move adventurer
-            addEvent("adventurer movement", curAdv, null);
+            addEvent("advMove", curAdv, null);
         }
         curRoom = curAdv.board.getRoomAt(curAdv.location);
         if (curRoom.hasCreature()) {
             fightCreature(curAdv, curRoom);
         }
         else {
-            if(curAdv.search.loot(curAdv, curRoom)) {
-                addEvent("found treasure", curAdv, null);
+            int preSearchHP = curAdv.health;    // needed to check if an adventurer avoided triggering a trap or died from it. set to adventurer health before attempting a search
+            HashMap<String, Boolean> searchResult = curAdv.search.loot(curAdv, curRoom); // performs a search and returns the result
+            if (searchResult.get("Treasure") != null) {             // enters if the adventurer found a treasure
+                addEvent("foundTreasure", curAdv, null);
+                String foundTreasureName = curAdv.ownedTreasures.get(curAdv.ownedTreasures.size() - 1).name;
+                if (foundTreasureName == "Potion") {
+                    addEvent("advHeal", curAdv, null);
+                }
+            }
+            if (searchResult.get("Trap") != null) {                 // enters if the adventurer found a trap
+                addEvent("foundTrap", curAdv, null);
+                int postSearchHP = curAdv.health;
+                if (preSearchHP > postSearchHP) { // the adventurer didn't avoid the trap and took damage
+                    addEvent("advHurt", curAdv, null);
+                    checkForAdvDeath(curAdv, curRoom);
+                }
             }
         }
     }
@@ -320,8 +380,10 @@ public class GameRunner implements Subject{
             Room curRoom = curAdv.board.getRoomAt(curAdv.location);
             if (curAdv.name == "R") { //if runner move twice
                 adventurerTurn(curAdv, curRoom);
-                //Second move
-                adventurerTurn(curAdv, curRoom);
+                //Second move if runner is still alive after their first turn, prevents zombie runner turns
+                if (aliveAdventurers.contains(curAdv)) {
+                    adventurerTurn(curAdv, curRoom);
+                }
             }
             else { //otherwise single turn
                 adventurerTurn(curAdv, curRoom);
@@ -331,13 +393,8 @@ public class GameRunner implements Subject{
 
 
     public void actionRunner() {
-        Logger log = new Logger();
-        registerObserver(log);
-
         adventurerAction(); //run adventurer actions
         creatureAction(); //run creature actions
-
-        removeObserver(log);
     }
 
     /**
@@ -390,7 +447,27 @@ public class GameRunner implements Subject{
         System.out.println("BK: " + bkC + " Remaining");
         System.out.println("Total Treasure: " + playSpace.unFoundTreasures.size());
     }
+
+    // function to delete subdirectories and files. taken from https://www.geeksforgeeks.org/java-program-to-delete-a-directory/
+    private void deleteDirectory(File file) {
+        // store all the paths of files and folders present
+        // inside directory
+        for (File subfile : file.listFiles()) {
+            // if it is a subfolder,e.g Rohan and Ritik,
+            // recursiley call function to empty subfolder
+            if (subfile.isDirectory()) {
+                deleteDirectory(subfile);
+            }
+            // delete files and empty subfolders
+            subfile.delete();
+        }
+    }
     public void runGame() {
+        // empties the "text output" folder each time runGame() is called, if it exists.
+        File directory = new File("text output");
+        if (!directory.mkdirs()) {
+            deleteDirectory(directory);
+        }
         Tracker tracker = new Tracker();
         registerObserver(tracker);
 
@@ -398,16 +475,22 @@ public class GameRunner implements Subject{
         placePlayers(); //place players
         placeTreasure(); //place treasure
         Boolean gO = false; //game over set to false
-        System.out.println("Hello! Welcome to RotLA. This key will help you get to know the characters. B = Brawler, S = Sneaker, R = Runner, T = Thief, OB = Orbiter, SK = Seeker, and BK = Blinker. The game will now begin.");
-        playSpace.printBoard();
+        // System.out.println("Hello! Welcome to RotLA. This key will help you get to know the characters. B = Brawler, S = Sneaker, R = Runner, T = Thief, OB = Orbiter, SK = Seeker, and BK = Blinker. The game will now begin.");
+        // playSpace.printBoard();
         while (!gO) {
-            actionRunner(); //run actions
-            playSpace.printBoard(); //print board
-            printStats(); //print stats
-            gO = gameOver(); //check if game is over
-            turn++;
-        }
+            Logger log = new Logger(turn);
+            registerObserver(log);
 
+            actionRunner(); //run actions
+            // playSpace.printBoard(); //print board
+            // printStats(); //print stats
+            gO = gameOver(); //check if game is over
+
+            addEvent("turnEnd", null, null);
+            turn++;
+            removeObserver(log);
+        }
+        addEvent("gameEnd", null, null);
         removeObserver(tracker);
     }
 

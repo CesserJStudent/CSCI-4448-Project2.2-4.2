@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 abstract class Treasure {
     //Abstract method for treasure actions
@@ -11,6 +12,14 @@ abstract class Treasure {
         //add treasure to adventurer
         adv.treasures.replace(name, true);
 
+    }
+    /**
+     * @param upperbound
+     * @return A random integer between 0 and (upperbound - 1), inclusive
+     */
+    static public int getRandInt(int upperbound) {
+        Random randInt = new Random();
+        return randInt.nextInt(upperbound);
     }
 }
 
@@ -68,7 +77,7 @@ class Portal extends Treasure {
             }
         }
 
-        int validRoomIndex = adv.getRandInt(allRooms.size());
+        int validRoomIndex = getRandInt(allRooms.size());
         if (Arrays.equals(adv.location, allRooms.get(validRoomIndex))) {
             treasureAction(adv); // if the previous location is equal to the new location at validRoomIndex, call the function again. (it wouldn't go anywhere otherwise)
 
@@ -90,7 +99,7 @@ class Trap extends Treasure {
     public void treasureAction(Adventurer adv) {
         //Trap action
         if (adv.search.name == "Careful") {
-            if(adv.getRandInt(1) == 0) {
+            if(getRandInt(1) == 0) {
                 ;
             }
             else {

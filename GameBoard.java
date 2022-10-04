@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.lang.*;
+// import java.lang.*;
 
 // COHESION: The GameBoard class has high cohesion since its only purpose is to initialize the board, print the board, and get information on a Room within the board
 public class GameBoard {
