@@ -1,64 +1,57 @@
-public abstract class Celebrate extends Combat {
-    Combat combatBehavior;
-    public abstract void celebrate();
+//decorator class, this is using the decorator pattern
+public abstract class Celebrate implements Decorate {
+    protected Combat decoratedCombat; //combat to decorate
+
+    public Celebrate(Combat decoratedCombat) {
+        this.decoratedCombat = decoratedCombat;
+    }
+
+    public Boolean fight(Adventurer adv, Creature cre) {
+        return decoratedCombat.fight(adv, cre);
+    } //combat action
 }
 
-class Shout extends Celebrate {
-    public Shout(Combat combat) {
-        this.combatBehavior = combat;
-    }
-
-    public void celebrate() {
-        // needs to be implemented
-    }
-
-    public Boolean fight(Adventurer adv, Creature cre) { // fight implementation may need to be changed
-        // beeds to be implemented
-        return null;
-    }
+//concrete shout class
+ class Shout extends Celebrate {
+     public Shout(Combat decoratedCombat)
+     {
+         super(decoratedCombat);
+     }
+    public String action() {
+        return("shout");
+    } //return shout
 }
 
+//concrete dance class
 class Dance extends Celebrate {
-    public Dance(Combat combat) {
-        this.combatBehavior = combat;
+    public Dance(Combat decoratedCombat)
+    {
+        super(decoratedCombat);
     }
-
-    public void celebrate() {
-        // needs to be implemented
-    }
-
-    public Boolean fight(Adventurer adv, Creature cre) {
-        // beeds to be implemented
-        return null;
-    }
+    public String action() {
+        return("dance");
+    } //return dance
 }
 
+//concrete Jump class
 class Jump extends Celebrate {
-    public Jump(Combat combat) {
-        this.combatBehavior = combat;
+    public Jump(Combat decoratedCombat)
+    {
+        super(decoratedCombat);
     }
-
-    public void celebrate() {
-        // needs to be implemented
-    }
-
-    public Boolean fight(Adventurer adv, Creature cre) {
-        // beeds to be implemented
-        return null;
-    }
+    public String action() {
+        return("jump");
+    } //return jump
 }
 
+//concrete Spin class
 class Spin extends Celebrate {
-    public Spin(Combat combat) {
-        this.combatBehavior = combat;
+    public Spin(Combat decoratedCombat)
+    {
+        super(decoratedCombat);
     }
 
-    public void celebrate() {
-        // needs to be implemented
-    }
-
-    public Boolean fight(Adventurer adv, Creature cre) {
-        // beeds to be implemented
-        return null;
-    }
+    public String action() {
+        return("spin");
+    } //return spin
 }

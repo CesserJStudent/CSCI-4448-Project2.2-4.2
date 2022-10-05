@@ -21,6 +21,7 @@ abstract class Adventurer {
         put("Gem", false);
         put("Armor", false);
         put("Potion", false);
+        put("Portal", false);
     }};
 
 

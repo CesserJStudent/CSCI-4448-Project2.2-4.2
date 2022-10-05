@@ -270,6 +270,40 @@ public class GameRunner implements Subject{
         }
     }
 
+    public String decorateAdv(Adventurer curAdv) { //class to decorate Adventurer after combat
+        Shout shout = new Shout(curAdv.combat);
+        Jump jump = new Jump(curAdv.combat);
+        Spin spin = new Spin(curAdv.combat);
+        Dance dance = new Dance(curAdv.combat);
+        String fullCel = "";
+        for (int i = 0; i < 2; i++) { //add 2 random of each action
+            if(curAdv.getRandInt(3) == 1) {
+                fullCel += shout.action();
+                fullCel += " ";
+            }
+            if(curAdv.getRandInt(3) == 1) {
+                fullCel += jump.action();
+                fullCel += " ";
+            }
+            if(curAdv.getRandInt(3) == 1) {
+                fullCel += spin.action();
+                fullCel += " ";
+            }
+            if(curAdv.getRandInt(3) == 1) {
+                fullCel += dance.action();
+                if(i == 0) {
+                    fullCel += " ";
+                }
+            }
+        }
+        if(fullCel.equals("")) {
+            fullCel = "No Celebration";
+            return fullCel;
+        }
+
+        return("Adventurer Celebrated:" + fullCel );
+    }
+
     /**
      * @param curAdv The adventurer who is fighting
      * @param curRoom The creature who is fighting
@@ -284,7 +318,8 @@ public class GameRunner implements Subject{
                 curRoom.removeCreature(curCre);
                 aliveCreatures.remove(curCre);
                 addEvent("advWin", curAdv, curCre);
-                addEvent("creDeath", null, curCre); 
+                addEvent("creDeath", null, curCre);
+                System.out.println(decorateAdv(curAdv));
             }
             else if (winner != null) { //if creature wins
                 curAdv.health -= 1; //if adventurer loses, reduce health by 1
@@ -309,6 +344,8 @@ public class GameRunner implements Subject{
                 aliveCreatures.remove(curCre);
                 addEvent("creLoss", curAdv, curCre);
                 addEvent("creDeath", null, curCre);
+                System.out.println(decorateAdv(curAdv));
+
             }
             else if(winner != null) { //if creature wins
                 curAdv.health -= 1; //if adventurer loses, reduce health by 1
@@ -483,7 +520,7 @@ public class GameRunner implements Subject{
 
             actionRunner(); //run actions
             // playSpace.printBoard(); //print board
-            // printStats(); //print stats
+            //printStats(); //print stats
             gO = gameOver(); //check if game is over
 
             addEvent("turnEnd", null, null);

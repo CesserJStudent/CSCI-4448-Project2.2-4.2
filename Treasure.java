@@ -32,6 +32,7 @@ class Sword extends Treasure {
     public void treasureAction(Adventurer adv) {
         //Sword action
         adv.armed = true;
+        adv.treasures.replace(name, true);
     }
 }
 
@@ -40,10 +41,11 @@ class Gem extends Treasure {
     Gem() {
         name = "Gem";
     }
-    //Sword class
+    //Gem class
     public void treasureAction(Adventurer adv) {
-        //Sword action
+        //gem action
         adv.cursed = true;
+        adv.treasures.replace(name, true);
     }
 }
 
@@ -64,9 +66,9 @@ class Portal extends Treasure {
     Portal() {
         name = "Portal";
     }
-    //Sword class
+    //Portal class
     public void treasureAction(Adventurer adv) {
-        //Sword action
+        //Portal allows to move to any random room
         ArrayList<Integer[]> allRooms = new ArrayList<Integer[]>();
         for (int i = 1; i <= 4; i++) {
             for (int j = 0; j < 3; j++) {
@@ -118,9 +120,10 @@ class Potion extends Treasure {
     Potion() {
         name = "Potion";
     }
-    //Sword class
+    //Potion class
     public void treasureAction(Adventurer adv) {
-        //Sword action
+        //Potions give an extra health
         adv.health += 1;
+        adv.treasures.replace(name, true);
     }
 }
