@@ -5,9 +5,7 @@ import java.util.ArrayList;
 public class Room {
     ArrayList<Adventurer> adventurersPresent = new ArrayList<Adventurer>(); //list of adventurers in room
     ArrayList<Creature> creaturesPresent = new ArrayList<Creature>(); //list of creatures in room
-    Boolean hasTreasure = true; //if room has treasure
     HashMap<String, Integer[]> adjacent = new HashMap<String, Integer[]>(); //hash map holds direction elements
-
     Treasure treasure = null; //treasure in room if any
 
     Room(Integer[] up, Integer[] down, Integer[] right, Integer[] left, Integer[] above, Integer[] below) {

@@ -1,0 +1,820 @@
+Logger and Tracker output are stored in a separate folder named "Logger-Tracker output for SingleGameRun"
+
+BOARD RENDER:
+
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Portal   1-0-1 - : - -    1-0-2 - : - Armor
+   1-1-0 - : BK BK -    1-1-1 B S T : - -    1-1-2 - : - - 
+   1-2-0 - : - Potion   1-2-1 - : - Portal   1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 R : SK -    2-1-2 - : - Sword
+   2-2-0 - : OB -    2-2-1 - : - -    2-2-2 - : BK OB Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : BK Armor
+   3-1-0 - : - Gem   3-1-1 - : SK Gem   3-1-2 - : - Trap
+   3-2-0 - : OB Trap   3-2-1 - : - Sword   3-2-2 - : SK -
+Level 4
+   4-0-0 - : SK Potion   4-0-1 - : - -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : OB Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 3 health.
+S has 3 health.
+R has 2 health.
+T has 3 health.
+OB: 4 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Total Treasure: 23
+R celebrates: spin shout jump dance
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Portal   1-0-1 - : - -    1-0-2 - : - Armor
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 S : - -
+   1-2-0 - : - Potion   1-2-1 B T : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : OB Gem
+   2-1-0 - : - -    2-1-1 R : - -    2-1-2 - : BK -
+   2-2-0 - : OB -    2-2-1 - : BK -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : OB BK -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : SK Gem   3-1-2 - : - Trap
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : SK -
+Level 4
+   4-0-0 - : SK Potion   4-0-1 - : OB -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : BK Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 3 health.
+S has 3 health.
+R has 2 health.
+T has 3 health.
+OB: 4 Remaining
+SK: 3 Remaining
+BK: 4 Remaining
+Total Treasure: 21
+R celebrates: jump dance jump
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Portal   1-0-1 - : - -    1-0-2 - : - Armor
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 B : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 S T : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 R : BK Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : OB -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : OB Gem   3-1-1 - : SK Gem   3-1-2 - : BK Trap
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : SK -
+Level 4
+   4-0-0 - : SK Potion   4-0-1 - : BK -    4-0-2 - : BK -
+   4-1-0 - : OB Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 3 health.
+S has 3 health.
+R has 1 health.
+T has 3 health.
+OB: 3 Remaining
+SK: 3 Remaining
+BK: 4 Remaining
+Total Treasure: 21
+R celebrates: spin dance
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : BK Portal   1-0-1 - : - -    1-0-2 - : - Armor
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 S : - -
+   1-2-0 - : BK Potion   1-2-1 - : - -    1-2-2 B : - Portal
+Level 2
+   2-0-0 R : - -    2-0-1 - : OB Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : OB Armor
+   3-1-0 - : BK Gem   3-1-1 - : - Gem   3-1-2 - : - Trap
+   3-2-0 - : - Trap   3-2-1 T : SK Sword   3-2-2 - : SK -
+Level 4
+   4-0-0 - : SK Potion   4-0-1 - : - -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : OB Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 3 health.
+S has 3 health.
+R has 1 health.
+T has 2 health.
+OB: 3 Remaining
+SK: 3 Remaining
+BK: 3 Remaining
+Total Treasure: 21
+T celebrates: spin dance shout
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Portal   1-0-1 - : - -    1-0-2 S : - Armor
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 B : BK -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : OB -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - Trap
+   3-2-0 - : - Trap   3-2-1 T : OB Sword   3-2-2 - : SK -
+Level 4
+   4-0-0 - : SK Potion   4-0-1 - : - -    4-0-2 - : - -
+   4-1-0 - : OB Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : BK Gem   4-2-1 - : - Sword   4-2-2 - : BK Sword
+B has 2 health.
+S has 3 health.
+T has 1 health.
+OB: 3 Remaining
+SK: 2 Remaining
+BK: 3 Remaining
+Total Treasure: 21
+T celebrates: shout spin shout spin
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Portal   1-0-1 - : - -    1-0-2 B : - Armor
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 S : BK -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : OB -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : BK -    2-2-2 - : BK Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : OB Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 T : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : SK Potion   4-0-1 - : - -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : OB Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 2 health.
+S has 2 health.
+T has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 3 Remaining
+Total Treasure: 20
+B celebrates: spin dance jump dance
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Portal   1-0-1 - : - -    1-0-2 S : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 B : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : OB -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : BK -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : OB -    3-0-1 - : - Potion   3-0-2 - : BK Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : OB Sword   4-2-2 - : - Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 19
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Portal   1-0-1 S : - -    1-0-2 B : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : BK -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : OB -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : OB Gem   3-1-1 - : - Gem   3-1-2 - : BK -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK OB -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 19
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 S : - Portal   1-0-1 B : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : OB -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : BK Sword   3-2-2 - : OB -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK BK -    4-0-2 - : - - 
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : OB Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 19
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Portal   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 S : - -    1-1-1 B : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : OB Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : OB Trap   3-2-1 - : - Sword   3-2-2 - : BK -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : BK - 
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : OB Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 19
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Portal   1-0-1 B : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 S : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : OB -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : BK Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : OB Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : OB Armor   4-1-1 - : BK Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 19
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 B : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : BK -
+   1-2-0 - : - Potion   1-2-1 S : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : OB Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : OB Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : OB Potion   4-0-1 - : SK -    4-0-2 - : BK -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 B S : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : OB -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : BK -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : OB -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK BK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : OB Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 B S : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : OB Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : BK -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : OB Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : BK -
+   4-1-0 - : OB Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 B S : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : BK -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : OB -    2-2-1 - : - -    2-2-2 - : BK Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : OB Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : OB Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 S : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - - 
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 B : - Gem
+   2-1-0 - : OB -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : BK Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : OB Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : OB BK Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 S : - -    1-1-2 - : - - 
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : OB -    2-0-1 B : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : OB -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : BK -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : OB Gem   4-2-1 - : BK Sword   4-2-2 - : - Sword
+B has 1 health.
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : BK -    1-1-1 S : - -    1-1-2 - : BK -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : OB Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : OB Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : OB Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 2 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 S : BK -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : OB -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : OB Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : BK Potion   4-1-2 - : - Trap
+   4-2-0 - : OB Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 S : BK Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : BK OB Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : OB Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : OB Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : BK -    1-1-2 S : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : OB -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : OB Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : OB Trap
+   4-2-0 - : BK Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 S : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - - 
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : OB -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : BK Gem   3-1-1 - : - Gem   3-1-2 - : OB -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : OB Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : BK Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 S : - -    1-0-2 - : - -
+   1-1-0 - : BK -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : OB Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : OB BK Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : OB Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 2 Remaining
+Total Treasure: 18
+S celebrates: shout jump spin dance
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 S : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : BK Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : OB Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : OB -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : OB Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : BK -    1-0-1 S : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : OB Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : OB Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : OB Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 S : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : BK Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : OB -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : OB Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK OB -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 S : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : OB -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : BK Armor
+   3-1-0 - : OB Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : OB Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 S : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : OB Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : OB -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK BK OB -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 S : - -    1-1-1 - : - -    1-1-2 - : BK -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - - 
+   2-2-0 - : OB -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : OB Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : OB Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : BK -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 S : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 - : OB Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : OB Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK OB -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : OB Portal   2-0-2 - : BK Gem
+   2-1-0 - : - -    2-1-1 S : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : OB Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : OB Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 S : OB Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : OB BK -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : - Gem   4-2-1 - : OB Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : - Portal   2-0-2 S : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : OB -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : - Sword   3-2-2 - : OB BK -
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : OB Trap
+   4-2-0 - : - Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+S has 1 health.
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - -    1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : - -    1-1-1 - : - -    1-1-2 - : - -
+   1-2-0 - : - Potion   1-2-1 - : - -    1-2-2 - : - Portal
+Level 2
+   2-0-0 - : - -    2-0-1 - : OB Portal   2-0-2 - : - Gem
+   2-1-0 - : - -    2-1-1 - : - -    2-1-2 - : - -
+   2-2-0 - : - -    2-2-1 - : - -    2-2-2 - : - Trap
+Level 3
+   3-0-0 - : - -    3-0-1 - : - Potion   3-0-2 - : - Armor
+   3-1-0 - : - Gem   3-1-1 - : - Gem   3-1-2 - : - -
+   3-2-0 - : - Trap   3-2-1 - : OB Sword   3-2-2 - : - -
+Level 4
+   4-0-0 - : OB Potion   4-0-1 - : SK -    4-0-2 - : - -
+   4-1-0 - : - Armor   4-1-1 - : - Potion   4-1-2 - : - Trap
+   4-2-0 - : BK Gem   4-2-1 - : - Sword   4-2-2 - : - Sword
+OB: 3 Remaining
+SK: 1 Remaining
+BK: 1 Remaining
+Total Treasure: 18
+All Adventurers eliminated

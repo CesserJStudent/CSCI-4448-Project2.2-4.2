@@ -8,11 +8,6 @@ abstract class Treasure {
 
     public String name;
 
-    public void addTreasure(Adventurer adv) {
-        //add treasure to adventurer
-        adv.treasures.replace(name, true);
-
-    }
     /**
      * @param upperbound
      * @return A random integer between 0 and (upperbound - 1), inclusive
@@ -57,6 +52,7 @@ class Armor extends Treasure {
     public void treasureAction(Adventurer adv) {
         //Armor action
         adv.armor = true;
+        adv.treasures.replace(name, true);
     }
 }
 

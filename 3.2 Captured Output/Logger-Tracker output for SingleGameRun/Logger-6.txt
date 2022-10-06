@@ -1,0 +1,15 @@
+Brawler has moved to room [1, 0, 2].
+Sneaker has moved to room [1, 1, 2].
+Sneaker has been defeated by Blinker!
+Sneaker has been hurt! Their health is now 2.
+Thief has moved to room [3, 1, 2].
+Thief has found a trap...
+Orbiter has moved to room [3, 0, 2].
+Blinker has moved to room [2, 2, 2].
+Orbiter has moved to room [4, 1, 2].
+Seeker has moved to room [3, 1, 2].
+Seeker has been defeated by Thief!
+Seeker has died...
+Thief celebrates! (but it's output currently only prints to the terminal)
+Orbiter has moved to room [2, 0, 0].
+Blinker has moved to room [2, 2, 1].

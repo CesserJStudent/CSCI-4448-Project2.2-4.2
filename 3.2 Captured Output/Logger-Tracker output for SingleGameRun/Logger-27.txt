@@ -1,0 +1,5 @@
+Sneaker has moved to room [1, 0, 1].
+Orbiter has moved to room [3, 1, 0].
+Blinker has moved to room [3, 0, 2].
+Orbiter has moved to room [4, 2, 1].
+Orbiter has moved to room [2, 2, 0].

@@ -1,0 +1,9 @@
+Brawler has moved to room [4, 0, 1].
+Brawler has been defeated by Seeker!
+Brawler has been hurt! Their health is now 0.
+Brawler has died...
+Orbiter has moved to room [3, 2, 0].
+Blinker has moved to room [1, 1, 2].
+Orbiter has moved to room [4, 0, 0].
+Orbiter has moved to room [2, 0, 1].
+Blinker has moved to room [1, 1, 0].

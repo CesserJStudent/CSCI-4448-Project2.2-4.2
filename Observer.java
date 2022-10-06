@@ -10,7 +10,7 @@ interface Observer {
 
     default public FileWriter openFile(String fileName) {
         try {
-            File directory = new File("text output");
+            File directory = new File("Logger-Tracker output");
             File file = new File(directory, fileName);
             FileWriter outputFile = new FileWriter(file);
             return outputFile;
@@ -22,7 +22,7 @@ interface Observer {
     }
     default public void writeToFile(FileWriter outputFile, String output) {
         try {
-            outputFile.write(output + "\n");
+            outputFile.write(output);
         } 
         catch (IOException err) {
             err.printStackTrace();
@@ -63,6 +63,7 @@ interface Observer {
     }
 }
 
+// OBSERVER: By implemented Observer, Logger can receive events from a Subject.
 class Logger implements Observer {
     FileWriter outputFile;
     String fileName;
@@ -113,10 +114,9 @@ class Logger implements Observer {
             case "advDeath":
                 readableEvent = adventurerName + " has died...";
                 break;
-            // case "advCelebrate":
-            //     event.add(adv.name);
-            //     event.add("adventurer celebration message"); // not sure how to add this yet  
-            //     break;
+            case "advCelebrate":
+                readableEvent = adventurerName + " celebrates! (but it's output currently only prints to the terminal)";
+                break;
             case "foundTreasure":
                 readableEvent = adventurerName + " has found a treasure! They have gained the effects of " + treasureName + ".";
                 break;
@@ -138,6 +138,10 @@ class Logger implements Observer {
             case "turnEnd": // loggers don't do anything at turn end. this sets "readableEvent" to null and causes closeFile() to be called in update
                 break;
         }
+        // appends a newline to the end of the event if it was set to a string
+        if (readableEvent != null) {
+            readableEvent += "\n";
+        }
         return readableEvent;
     }
 }
@@ -153,6 +157,7 @@ class Tracker implements Observer {
     Tracker() {
         outputFile = openFile(fileName);
     }
+
     public void update(HashMap<String, String> event) {
         // returns the string to be printed to a text file
         String eventOutput = processEvent(event);
@@ -168,16 +173,17 @@ class Tracker implements Observer {
 
     // helper function for processEvent. needed so that tracker values aren't all set to null when an adventurer dies
     private void updateAdventurerStats(HashMap<String, String> event) {
-        if (event.get("BLocation") != null) {
-            if (!brawlerStats.isEmpty()) {
+        if (event.get("BLocation") != null) { // only enters if the brawler is still alive since all brawler keys are null when they're dead.
+            if (!brawlerStats.isEmpty()) { // clears out the previous data in brawlerStats if it existed
                 brawlerStats.clear();
             }
+            // updates brawlerStats to their most recent stats at the end of a turn. 
             brawlerStats.add(event.get("BLocation"));
             brawlerStats.add(event.get("BHealth"));
             brawlerStats.add(event.get("BTreasure"));
         }
-        else { // the adventurer died so their health should be set to 0
-            brawlerStats.set(1, "0");
+        else { // the adventurer died so their health should be set to 0, but change nothing else to preserve their final stats in Tracker output
+            if (brawlerStats.get(1) != "0") brawlerStats.set(1, "0"); // only enters the first time the adventurer died
         }
 
         if (event.get("SLocation") != null) {
@@ -189,7 +195,7 @@ class Tracker implements Observer {
             sneakerStats.add(event.get("STreasure"));
         }
         else {
-            sneakerStats.set(1, "0");
+            if (sneakerStats.get(1) != "0") sneakerStats.set(1, "0");
         }
 
         if (event.get("RLocation") != null) {
@@ -201,7 +207,7 @@ class Tracker implements Observer {
             runnerStats.add(event.get("RTreasure"));
         }
         else {
-            runnerStats.set(1, "0");
+            if (runnerStats.get(1) != "0") runnerStats.set(1, "0");
         }
 
         if (event.get("TLocation") != null) {
@@ -213,25 +219,26 @@ class Tracker implements Observer {
             thiefStats.add(event.get("TTreasure"));
         }
         else {
-            thiefStats.set(1, "0");
+            if (thiefStats.get(1) != "0") thiefStats.set(1, "0");
         }
     }
 
     public String processEvent(HashMap<String, String> event) {
         String statusUpdate = "";
         String eventType = event.get("eventType");
-        // tracker only cares about the status at the end of turns and the end of the game, so all other event types.
+        // tracker only cares about the status at the end of turns and the end of the game, so all other event types are ignored.
         if (eventType == "gameEnd") {
             statusUpdate = null;
         }
         else if (eventType == "turnEnd") {
-            updateAdventurerStats(event);
+            updateAdventurerStats(event); // updates all adventurer stats in Tracker to the stats sent in event. if an adventurer is dead, their health is set to 0 and all other stats are preserved
             String nl = "\n";
             String advFormat = "%-20s | %-15s | %-10s | %s";
             String creFormat = "%-20s | %-15s";
             statusUpdate += "==========  Turn " + event.get("turn") + "  ==========" + nl + nl;
             statusUpdate += "Total Active Adventurers: " + event.get("totalAdv") + nl;
 
+            //
             String currLine = String.format(advFormat, "ADVENTURERS", "ROOM", "HEALTH", "TREASURE") + nl;
             statusUpdate += currLine;
             currLine = String.format(advFormat, "Brawler", brawlerStats.get(0), brawlerStats.get(1), brawlerStats.get(2)) + nl;

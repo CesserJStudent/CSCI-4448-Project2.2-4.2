@@ -66,7 +66,7 @@ class Trained extends Combat {
 
 class Expert extends Combat {
     Expert() {
-        name = "Trained";
+        name = "Expert";
         fightBonus = 2;
     }
 }

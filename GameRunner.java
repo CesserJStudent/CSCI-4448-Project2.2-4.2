@@ -11,6 +11,7 @@ interface Subject {
     public void notifyObserver();
 }
 
+// OBSERVER: By implementing Subject, GameRunner now publishes and sends out events to all registered observers
 public class GameRunner implements Subject{
     GameBoard playSpace = new GameBoard(); //create game board
     ArrayList<Adventurer> aliveAdventurers = new ArrayList<Adventurer>();   // list of alive adventurers
@@ -19,14 +20,21 @@ public class GameRunner implements Subject{
     HashMap<String, String> event = new HashMap<String, String>();          // list containing strings needed to describe an event.
     int turn = 1; // the current turn
 
+    /** Adds an observer to be notified of events 
+     * @param obs The observer to be added
+    */
     public void registerObserver(Observer obs) {
         observers.add(obs);
     }
 
+    /** Removes an observer from the list of current observers
+     * @param obs The observer to be removed
+     */
     public void removeObserver(Observer obs) {
         observers.remove(obs);
     }
 
+    /** Sends an event to all observers via their update() method */
     public void notifyObserver() {
         for (Observer i : observers) {
             i.update(event);
@@ -76,72 +84,59 @@ public class GameRunner implements Subject{
         return statusUpdate;
     }
 
+    /**
+     * Populates "event" with all necessary information for each event. Calls notifyObserver() after populating it.
+     * @param eventType A description of the event being added
+     * @param adv The adventurer involved in the event, if any exists
+     * @param cre The creature involved in the event, if any exists
+     */
     private void addEvent(String eventType, Adventurer adv, Creature cre) {
-        if (!event.isEmpty()) event.clear();          // clears out the past event, if it exists
-        event.put("eventType", eventType);       // adds the event type with key "eventType"
+        if (!event.isEmpty()) event.clear();     // clears out the past event, if it exists
+        event.put("eventType", eventType);  // adds the type of event with key "eventType"
         
         switch(eventType) {
             case "advMove":                 // adds the adventurer's name and location with keys "advName" and "location" respectively
                 event.put("advName", adv.name);
                 event.put("location", Arrays.toString(adv.location));
                 break;
-            case "advWin":                  // adds the adventurer's name and creature's name for both wins and losses. keys are "advName" and "creName"
+            case "advWin", "advLoss":                      // adds the adventurer's name and creature's name for both wins and losses. keys are "advName" and "creName"
                 event.put("advName", adv.name);
                 event.put("creName", cre.name);
                 break;
-            case "advLoss":
-                event.put("advName", adv.name);
-                event.put("creName", cre.name);
-                break;
-            case "advHurt":                 // adds the damaged adventurer's name and health. keys are "advName" and "advHealth"
+            case "advHurt", "advHeal":                     // adds the adventurer's name and health for both events. keys are "advName" and "advHealth"
                 event.put("advName", adv.name);
                 event.put("advHealth", String.valueOf(adv.health));
                 break;
-            case "advHeal":                 // used when the adventurer finds a potion
-                event.put("advName", adv.name);
-                event.put("advHealth", String.valueOf(adv.health));
-                break;
-            case "advDeath":                // adds the defeated adventurer's name to "event"
+            case "advDeath", "advCelebrate", "foundTrap":  // these 3 events only require the adventurer's name
                 event.put("advName", adv.name);
                 break;
-            // case "advCelebrate":
-            //     event.add(adv.name);
-            //     event.add("adventurer celebration message"); // not sure how to add this yet  
-            //     break;
             case "foundTreasure":           // adds the adventurer's name and found treasure's name. keys are "advName" and "treasureName"
                 event.put("advName", adv.name);
                 String foundTreasureName = adv.ownedTreasures.get(adv.ownedTreasures.size() - 1).name;
                 event.put("treasureName", foundTreasureName);
                 break;
-            case "foundTrap":
-                event.put("advName", adv.name);
-                break;
             case "creMove":                 // creature events are handled the same as adventurer events. equivalent keys are prefixed with "cre" instead of "adv"
                 event.put("creName", cre.name);
                 event.put("location", Arrays.toString(cre.location));
                 break;
-            case "creWin":
-                event.put("creName", cre.name);
-                event.put("advName", adv.name);
-                break;
-            case "creLoss":
+            case "creWin", "creLoss":
                 event.put("creName", cre.name);
                 event.put("advName", adv.name);
                 break;
             case "creDeath":
                 event.put("creName", cre.name);
                 break;
-            case "turnEnd":     // used to signal the end of turn. contains all the data needed for tracker
+            case "turnEnd":  // used to signal the end of turn. stop condition for logger and contains all the data needed for tracker
                 event = getStatusUpdate(eventType);
                 break;
-            case "gameEnd":    // used to signal the end of the game. stop condition for tracker
+            case "gameEnd":  // used to signal the end of the game. stop condition for tracker
                 break;
             default:
                 event.clear();
                 System.out.println("invalid event added");
                 return;
         }
-        notifyObserver();   // passes this event to all observers
+        if (!event.isEmpty()) notifyObserver();   // passes this event to all observers, unless an invalid event was added
     }
 
     /**
@@ -277,19 +272,19 @@ public class GameRunner implements Subject{
         Dance dance = new Dance(curAdv.combat);
         String fullCel = "";
         for (int i = 0; i < 2; i++) { //add 2 random of each action
-            if(curAdv.getRandInt(3) == 1) {
+            if(getRandInt(3) == 1) {
                 fullCel += shout.action();
                 fullCel += " ";
             }
-            if(curAdv.getRandInt(3) == 1) {
+            if(getRandInt(3) == 1) {
                 fullCel += jump.action();
                 fullCel += " ";
             }
-            if(curAdv.getRandInt(3) == 1) {
+            if(getRandInt(3) == 1) {
                 fullCel += spin.action();
                 fullCel += " ";
             }
-            if(curAdv.getRandInt(3) == 1) {
+            if(getRandInt(3) == 1) {
                 fullCel += dance.action();
                 if(i == 0) {
                     fullCel += " ";
@@ -298,10 +293,9 @@ public class GameRunner implements Subject{
         }
         if(fullCel.equals("")) {
             fullCel = "No Celebration";
-            return fullCel;
         }
 
-        return("Adventurer Celebrated:" + fullCel );
+        return fullCel;
     }
 
     /**
@@ -319,7 +313,8 @@ public class GameRunner implements Subject{
                 aliveCreatures.remove(curCre);
                 addEvent("advWin", curAdv, curCre);
                 addEvent("creDeath", null, curCre);
-                System.out.println(decorateAdv(curAdv));
+                addEvent("advCelebrate", curAdv, null);
+                System.out.println(curAdv.name + " celebrates: " + decorateAdv(curAdv));
             }
             else if (winner != null) { //if creature wins
                 curAdv.health -= 1; //if adventurer loses, reduce health by 1
@@ -344,7 +339,8 @@ public class GameRunner implements Subject{
                 aliveCreatures.remove(curCre);
                 addEvent("creLoss", curAdv, curCre);
                 addEvent("creDeath", null, curCre);
-                System.out.println(decorateAdv(curAdv));
+                addEvent("advCelebrate", curAdv, null);
+                System.out.println(curAdv.name + " celebrates: " + decorateAdv(curAdv));
 
             }
             else if(winner != null) { //if creature wins
@@ -459,7 +455,7 @@ public class GameRunner implements Subject{
         //print stats for Adventurers
         for(int i = 0; i < aliveAdventurers.size(); i++) {
             Adventurer curAdv = aliveAdventurers.get(i);
-            System.out.println(curAdv.name + " has " + curAdv.health + " health and " + curAdv.ownedTreasures + " treasure.");
+            System.out.println(curAdv.name + " has " + curAdv.health + " health.");
         }
 
         int obC = 0;
@@ -501,7 +497,7 @@ public class GameRunner implements Subject{
     }
     public void runGame() {
         // empties the "text output" folder each time runGame() is called, if it exists.
-        File directory = new File("text output");
+        File directory = new File("Logger-Tracker output");
         if (!directory.mkdirs()) {
             deleteDirectory(directory);
         }
@@ -520,7 +516,7 @@ public class GameRunner implements Subject{
 
             actionRunner(); //run actions
             // playSpace.printBoard(); //print board
-            //printStats(); //print stats
+            // printStats(); //print stats
             gO = gameOver(); //check if game is over
 
             addEvent("turnEnd", null, null);

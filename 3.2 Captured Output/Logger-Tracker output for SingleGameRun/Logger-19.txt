@@ -1,0 +1,7 @@
+Sneaker has moved to room [1, 1, 2].
+Sneaker has been defeated by Blinker!
+Sneaker has been hurt! Their health is now 1.
+Orbiter has moved to room [3, 2, 1].
+Orbiter has moved to room [4, 2, 0].
+Orbiter has moved to room [2, 2, 1].
+Blinker has moved to room [4, 1, 1].

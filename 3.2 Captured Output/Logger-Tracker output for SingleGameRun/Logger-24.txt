@@ -1,0 +1,9 @@
+Sneaker has moved to room [1, 0, 2].
+Orbiter has moved to room [3, 1, 2].
+Blinker has moved to room [1, 2, 2].
+Orbiter has moved to room [4, 1, 0].
+Orbiter has moved to room [2, 2, 2].
+Blinker has moved to room [1, 0, 2].
+Blinker has been defeated by Sneaker!
+Blinker has died...
+Sneaker celebrates! (but it's output currently only prints to the terminal)
