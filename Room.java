@@ -9,12 +9,12 @@ public class Room {
     Treasure treasure = null; //treasure in room if any
 
     Room(Integer[] up, Integer[] down, Integer[] right, Integer[] left, Integer[] above, Integer[] below) {
-        adjacent.put("Up", up);
-        adjacent.put("Down", down);
-        adjacent.put("Right", right);
-        adjacent.put("Left", left);
-        adjacent.put("Above", above);
-        adjacent.put("Below", below);
+        adjacent.put("up", up);
+        adjacent.put("down", down);
+        adjacent.put("right", right);
+        adjacent.put("left", left);
+        adjacent.put("above", above);
+        adjacent.put("below", below);
     }
 
     /**

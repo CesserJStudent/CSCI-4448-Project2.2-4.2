@@ -65,6 +65,7 @@ class Portal extends Treasure {
     //Portal class
     public void treasureAction(Adventurer adv) {
         //Portal allows to move to any random room
+        adv.treasures.replace(name, true);
         ArrayList<Integer[]> allRooms = new ArrayList<Integer[]>();
         for (int i = 1; i <= 4; i++) {
             for (int j = 0; j < 3; j++) {
@@ -86,6 +87,7 @@ class Portal extends Treasure {
             adv.board.getRoomAt(adv.location).addAdventurer(adv); //add to new location
         }
     }
+
 }
 
 class Trap extends Treasure {
@@ -96,6 +98,7 @@ class Trap extends Treasure {
     //Sword class
     public void treasureAction(Adventurer adv) {
         //Trap action
+        adv.treasures.replace(name, true);
         if (adv.search.name == "Careful") {
             if(getRandInt(1) == 0) {
                 ;

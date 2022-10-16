@@ -1,12 +1,11 @@
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
+
 
 abstract class Adventurer {
     // ENCAPSULATION: Adventurer's attributes are only accessible within subclasses and their package
     protected GameBoard board;
-    protected Integer[] location;
-    protected int health = 3;
+    protected Integer[] location = new Integer[]{0, 1, 1};
+    protected int health;
     protected Boolean armed = false;
     protected Boolean cursed = false;
     protected Boolean armor = false;
@@ -22,6 +21,7 @@ abstract class Adventurer {
         put("Armor", false);
         put("Potion", false);
         put("Portal", false);
+        put("Trap", false);
     }};
 
 
@@ -55,10 +55,16 @@ abstract class Adventurer {
     public void move() {
         HashMap<String, Integer[]> adjRooms = board.getAdjacentRooms(location);  // gets all adjacent rooms using a HashMap
         ArrayList<String> validDirections = getValidDirections(adjRooms);        // creates an ArrayList of strings containing all valid directions that can be traveled all possible values are ("Up", "Down", "Right", "Left", "Above", "Below")
-        int randInt = getRandInt(validDirections.size());                        // chooses a random index to get a direction
-        String chosenDirection = validDirections.get(randInt);
+        System.out.printf("You are able to move: ");
+        System.out.printf(validDirections.get(0));
+        for (int i = 1; i < validDirections.size(); i++) {                       // traverses the validDirections ArrayList
+            System.out.printf(", " + validDirections.get(i));                    // prints all valid directions
+        }
+        System.out.printf("%n");
+        Scanner directionScan = new Scanner(System.in);
+        String direction = directionScan.nextLine();
         board.getRoomAt(location).removeAdventurer(this);                   // removes the adventurer from the previous room before updating location
-        location = adjRooms.get(chosenDirection);                                // updates location
+        location = adjRooms.get(direction.toLowerCase(Locale.ROOT));                                // updates location
         board.getRoomAt(location).addAdventurer(this);
         // adds the adventurer to the room associated with location
     }
@@ -69,12 +75,12 @@ abstract class Adventurer {
  * An adventurer who gets +2 to each dice roll when fighting
 */
 class Brawler extends Adventurer {
-    Brawler(GameBoard gb, Integer[] loc) {
+    Brawler(GameBoard gb, String cName) {
         board = gb;
-        name = "B";
-        location = loc;
+        name = cName;
         combat = new Expert();
         search = new Careless();
+        health = 12;
     }
 }
 
@@ -82,12 +88,12 @@ class Brawler extends Adventurer {
  * An adventurer who has a 50% chance not to fight creatures found in their room (implemented in GameRunner adventurerAction())
 */
 class Sneaker extends Adventurer {
-    Sneaker(GameBoard gb, Integer[] loc) {
+    Sneaker(GameBoard gb, String cName) {
         board = gb;
-        name = "S";
-        location = loc;
+        name = cName;
         combat = new Stealth();
         search = new Quick();
+        health = 8;
     }
 }
 
@@ -95,12 +101,12 @@ class Sneaker extends Adventurer {
  * An adventurer who gets to perform two actions per turn
 */
 class Runner extends Adventurer {
-    Runner(GameBoard gb, Integer[] loc) {
+    Runner(GameBoard gb, String cName) {
         board = gb;
-        name = "R";
-        location = loc;
+        name = cName;
         combat = new Untrained();
         search = new Quick();
+        health = 10;
     }
 }
 
@@ -108,11 +114,11 @@ class Runner extends Adventurer {
  * An adventurer who gets +1 to finding treasure and +1 to fighting
 */
 class Thief extends Adventurer {
-    Thief(GameBoard gb, Integer[] loc) {
+    Thief(GameBoard gb, String cName) {
         board = gb;
-        name = "T";
-        location = loc;
+        name = cName;
         combat = new Trained();
         search = new Careful();
+        health = 10;
     }
 }

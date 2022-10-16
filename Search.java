@@ -48,18 +48,14 @@ public class Search {
             else {
                 if(!checkForTreasure(adv, room.treasure)) { //check if there is a trap in the room and if the treasure is already owned by the adventurer
                     roll = ((getRandInt(6) + 1) + (getRandInt(6) + 1));
-                    if (roll >= 10) {
+                    if (roll >= 7) {
                         adv.ownedTreasures.add(curTres); //add the treasure to the adventurer's list of owned treasures
                         adv.board.unFoundTreasures.remove(curTres); //remove the treasure from the list of unowned treasures
                         room.treasure = null;
                         searchItem = "Treasure";
                         searchSuccess = true;
-                        if(curTres.name != "Portal") {
-                            curTres.treasureAction(adv);  //perform the action of the treasure
-                        }
-                        else {
-                            adv.treasures.replace("Portal", true); //if the treasure is a portal, add it to the adventurer's list of treasures
-                        }
+                        curTres.treasureAction(adv);  //perform the action of the treasure
+
                     }
                 }
             }
@@ -90,18 +86,13 @@ class Careful extends Search {
             else {
                 if(!checkForTreasure(adv, room.treasure)) { //check if the treasure is already owned by the adventurer
                     roll = ((getRandInt(6) + 1) + (getRandInt(6) + 1));
-                    if (roll >= 7) {
+                    if (roll >= 4) {
                         adv.ownedTreasures.add(curTres);
                         adv.board.unFoundTreasures.remove(curTres);
                         room.treasure = null;
                         searchItem = "Treasure";
                         searchSuccess = true;
-                        if(curTres.name != "Portal") {
-                            curTres.treasureAction(adv);
-                        }
-                        else {
-                            adv.treasures.replace("Portal", true); //if the treasure is a portal, add it to the adventurer's list of treasures
-                        }
+                        curTres.treasureAction(adv);
                     }
                 }
             }
@@ -121,29 +112,23 @@ class Quick extends Search {
         String searchItem = "";
         Boolean searchSuccess = false;
         HashMap<String, Boolean> searchResult = new HashMap<String, Boolean>();
-        if (Math.random() > 0.33) { // 33% chance of skipping search
-            if (room.treasure != null) {
-                Treasure curTres = room.treasure;
-                if (checkForTrap(room, adv)) { // the adventurer triggered a trap
-                    searchItem = "Trap";
-                    searchSuccess = true;
-                }
-                else {
-                    if(!checkForTreasure(adv, room.treasure)) { //check if the treasure is already owned by the adventurer
-                        roll = ((getRandInt(6) + 1) + (getRandInt(6) + 1));
-                        if (roll >=9) {
-                            adv.ownedTreasures.add(curTres);
-                            adv.board.unFoundTreasures.remove(curTres);
-                            room.treasure = null;
-                            searchItem = "Treasure";
-                            searchSuccess = true;
-                            if(curTres.name != "Portal") {
-                                curTres.treasureAction(adv);
-                            }
-                            else {
-                                adv.treasures.replace("Portal", true);
-                            }
-                        }
+
+        if (room.treasure != null) {
+            Treasure curTres = room.treasure;
+            if (checkForTrap(room, adv)) { // the adventurer triggered a trap
+                searchItem = "Trap";
+                searchSuccess = true;
+            }
+            else {
+                if(!checkForTreasure(adv, room.treasure)) { //check if the treasure is already owned by the adventurer
+                    roll = ((getRandInt(6) + 1) + (getRandInt(6) + 1));
+                    if (roll >=6) {
+                        adv.ownedTreasures.add(curTres);
+                        adv.board.unFoundTreasures.remove(curTres);
+                        room.treasure = null;
+                        searchItem = "Treasure";
+                        searchSuccess = true;
+                        curTres.treasureAction(adv);
                     }
                 }
             }

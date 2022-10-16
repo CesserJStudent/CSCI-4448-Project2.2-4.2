@@ -27,9 +27,6 @@ public class GameBoard {
                             Integer[] right = {i, 1, 2};
                             Integer[] left = {i, 1, 0};
                             Integer[] below = {i-1, 1, 1};
-                            if (i == 1){
-                                below = null; // makes it so board[0][1][1] can't be accessed again
-                            }
                             if(i < 4) {Integer[] above = {i+1, 1, 1};
                                 board.get(i).get(j).add(new Room(up, down, right, left, above, below));}
                             else {Integer[] above = null;
