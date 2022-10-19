@@ -1,16 +1,16 @@
 public class CreatureFactory {
-    public Creature newCreature(String creatureType, GameBoard board, Integer[] location) {
+    public Creature newCreature(String creatureType, Integer[] location) {
         if (creatureType == null) {
             return null;
         }
         if (creatureType.equalsIgnoreCase("Orbiter")) {
-            return new Orbiter(board, location);
+            return new Orbiter(location);
         }
         else if (creatureType.equalsIgnoreCase("Seeker")) {
-            return new Seeker(board, location);
+            return new Seeker(location);
         }
         else if (creatureType.equalsIgnoreCase("Blinker")) {
-            return new Blinker(board, location);
+            return new Blinker(location);
         }
         return null;
     }

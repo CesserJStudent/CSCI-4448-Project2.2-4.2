@@ -16,15 +16,15 @@ public class Combat {
     public Boolean fight(Adventurer adv, Creature cre) {
         int adv_roll = ((getRandInt(6) + 1) + (getRandInt(6) + 1)); // adv_roll
         int cre_roll = ((getRandInt(6) + 1) + (getRandInt(6) + 1)); // cre_roll
-        if (adv.armed == true) {
+        if (adv.treasures.get("Sword") == true) {
             adv_roll += 1; //add one to adv_roll if armed
         }
 
-        if (adv.cursed == true) {
+        if (adv.treasures.get("Gem") == true) {
             cre_roll += 1; //add one to cre_roll if cursed
         }
 
-        if (adv.armor == true) {
+        if (adv.treasures.get("Armor") == true) {
             cre_roll -= 1; //suvbtract one from cre_roll if armor
         }
         adv_roll += fightBonus;
@@ -34,19 +34,8 @@ public class Combat {
 
 class Stealth extends Combat {
     Stealth() {
-        name = "Careful";
+        name = "Stealth";
         fightBonus = 0;
-    }
-    @Override
-    public Boolean fight(Adventurer adv, Creature cre) {
-        if(getRandInt(2) == 0) { //50% chance of returning null
-            return null;
-        }
-
-        else {
-            return super.fight(adv, cre);
-        }
-
     }
 }
 

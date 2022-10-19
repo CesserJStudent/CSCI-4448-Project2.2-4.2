@@ -3,18 +3,14 @@ import java.util.*;
 
 abstract class Adventurer {
     // ENCAPSULATION: Adventurer's attributes are only accessible within subclasses and their package
-    protected GameBoard board;
+    protected GameBoard board = GameBoard.getBoard();
     protected Integer[] location = new Integer[]{0, 1, 1};
     protected int health;
-    protected Boolean armed = false;
-    protected Boolean cursed = false;
-    protected Boolean armor = false;
     protected String name;
-    protected ArrayList <Treasure> ownedTreasures = new ArrayList <Treasure>();
     protected Combat combat = null;
     protected Search search = null;
 
-
+    protected String mostRecentTreasure;
     HashMap<String, Boolean> treasures = new HashMap<String, Boolean>() {{
         put("Sword", false);
         put("Gem", false);
@@ -39,7 +35,7 @@ abstract class Adventurer {
      * @param  adj - A HashMap containing all adjacent directions as keys, and an integer array as values i.e ("Up", {1, 0, 1})
      * @return An ArrayList of strings containing all possible travel directions
     */
-    static public ArrayList<String> getValidDirections(HashMap<String, Integer[]> adj) {
+    static private ArrayList<String> getValidDirections(HashMap<String, Integer[]> adj) {
         ArrayList<String> validDirections = new ArrayList<String>();
         for (String i : adj.keySet()) {     // traverses the adj HashMap. i is set to the key each loop
             if (adj.get(i) != null) {       // checks if the value associated with the key isn't null
@@ -55,13 +51,14 @@ abstract class Adventurer {
     public void move() {
         HashMap<String, Integer[]> adjRooms = board.getAdjacentRooms(location);  // gets all adjacent rooms using a HashMap
         ArrayList<String> validDirections = getValidDirections(adjRooms);        // creates an ArrayList of strings containing all valid directions that can be traveled all possible values are ("Up", "Down", "Right", "Left", "Above", "Below")
-        System.out.printf("You are able to move: ");
+        System.out.printf("You are able to move in the following direction(s): ");
         System.out.printf(validDirections.get(0));
         for (int i = 1; i < validDirections.size(); i++) {                       // traverses the validDirections ArrayList
             System.out.printf(", " + validDirections.get(i));                    // prints all valid directions
         }
         System.out.printf("%n");
-        Scanner directionScan = new Scanner(System.in);
+        System.out.println("Please enter a direction to move in.");
+        Scanner directionScan = UserInput.getInput().getScanner();
         String direction = directionScan.nextLine();
         board.getRoomAt(location).removeAdventurer(this);                   // removes the adventurer from the previous room before updating location
         location = adjRooms.get(direction.toLowerCase(Locale.ROOT));                                // updates location
@@ -75,8 +72,7 @@ abstract class Adventurer {
  * An adventurer who gets +2 to each dice roll when fighting
 */
 class Brawler extends Adventurer {
-    Brawler(GameBoard gb, String cName) {
-        board = gb;
+    Brawler(String cName) {
         name = cName;
         combat = new Expert();
         search = new Careless();
@@ -88,8 +84,7 @@ class Brawler extends Adventurer {
  * An adventurer who has a 50% chance not to fight creatures found in their room (implemented in GameRunner adventurerAction())
 */
 class Sneaker extends Adventurer {
-    Sneaker(GameBoard gb, String cName) {
-        board = gb;
+    Sneaker(String cName) {
         name = cName;
         combat = new Stealth();
         search = new Quick();
@@ -101,8 +96,7 @@ class Sneaker extends Adventurer {
  * An adventurer who gets to perform two actions per turn
 */
 class Runner extends Adventurer {
-    Runner(GameBoard gb, String cName) {
-        board = gb;
+    Runner(String cName) {
         name = cName;
         combat = new Untrained();
         search = new Quick();
@@ -114,8 +108,7 @@ class Runner extends Adventurer {
  * An adventurer who gets +1 to finding treasure and +1 to fighting
 */
 class Thief extends Adventurer {
-    Thief(GameBoard gb, String cName) {
-        board = gb;
+    Thief(String cName) {
         name = cName;
         combat = new Trained();
         search = new Careful();

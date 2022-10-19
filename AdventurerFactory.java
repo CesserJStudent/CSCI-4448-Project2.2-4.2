@@ -1,19 +1,19 @@
 public class AdventurerFactory {
-    public Adventurer newAdv(String advType, GameBoard board, String name) {
+    public Adventurer newAdv(String advType, String name) {
         if (advType == null) {
             return null;
         }
         if (advType.equalsIgnoreCase("Brawler")) {
-            return new Brawler(board, name);
+            return new Brawler(name);
         }
         else if (advType.equalsIgnoreCase("Sneaker")) {
-            return new Sneaker(board, name);
+            return new Sneaker(name);
         }
         else if (advType.equalsIgnoreCase("Runner")) {
-            return new Runner(board, name);
+            return new Runner(name);
         }
         else if (advType.equalsIgnoreCase("Thief")) {
-            return new Thief(board, name);
+            return new Thief(name);
         }
         return null;
     }

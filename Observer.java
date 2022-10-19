@@ -4,11 +4,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-interface Observer {
-    public void update(HashMap<String, String> event);
-    public String processEvent(HashMap<String, String> event);
+abstract class Observer {
+    abstract public void update(HashMap<String, String> event);
+    abstract public String processEvent(HashMap<String, String> event);
 
-    default public FileWriter openFile(String fileName) {
+    static protected FileWriter openFile(String fileName) {
         try {
             File directory = new File("Logger-Tracker output");
             File file = new File(directory, fileName);
@@ -20,7 +20,7 @@ interface Observer {
             return null;
         }
     }
-    default public void writeToFile(FileWriter outputFile, String output) {
+    static protected void writeToFile(FileWriter outputFile, String output) {
         try {
             outputFile.write(output);
         } 
@@ -29,7 +29,7 @@ interface Observer {
         }
     }
 
-    default public void closeFile(FileWriter outputFile) {
+    static protected void closeFile(FileWriter outputFile) {
         try {
             outputFile.close();
         } 
@@ -38,18 +38,9 @@ interface Observer {
         }
     }
 
-    default public String convertName(String playerName) {
+    static public String convertName(String playerName) {
         if (playerName == null) return null;
         switch(playerName) {
-            // adventurer names
-            case "B":
-                return "Brawler";
-            case "S":
-                return "Sneaker";
-            case "R":
-                return "Runner";
-            case "T":
-                return "Thief";
             // creature names
             case "OB":
                 return "Orbiter";
@@ -63,14 +54,24 @@ interface Observer {
     }
 }
 
-// OBSERVER: By implemented Observer, Logger can receive events from a Subject.
-class Logger implements Observer {
-    FileWriter outputFile;
-    String fileName;
+// OBSERVER: By implementing Observer, Logger can receive events from a Subject.
+class Logger extends Observer {
+    static FileWriter outputFile;
+    static String fileName;
+    private static Logger uniqueInstance;
 
-    Logger(int turn) {
+    private Logger(int turn) {
         fileName = "Logger-" + turn + ".txt"; 
         outputFile = openFile(fileName);
+    }
+
+    public static synchronized Logger getInstance(int turn) {
+        if (uniqueInstance == null) {
+            uniqueInstance = new Logger(turn);
+        }
+        fileName = "Logger-" + turn +".txt";
+        outputFile = openFile(fileName);
+        return uniqueInstance;
     }
     
     public void update(HashMap<String, String> event) {
@@ -87,7 +88,7 @@ class Logger implements Observer {
     public String processEvent(HashMap<String, String> event) {
         // these are all the valid keys of "event". any keys not in the current "event" will have null values
         String readableEvent = null;
-        String adventurerName = convertName(event.get("advName"));
+        String adventurerName = event.get("advName");
         String adventurerHealth = event.get("advHealth");
         String creatureName = convertName(event.get("creName"));
         String location = event.get("location");
@@ -146,15 +147,18 @@ class Logger implements Observer {
     }
 }
 
-class Tracker implements Observer {
+class Tracker extends Observer {
     FileWriter outputFile;
     String fileName = "Tracker.txt";
-    ArrayList<String> brawlerStats = new ArrayList<String>();
-    ArrayList<String> sneakerStats = new ArrayList<String>();
-    ArrayList<String> runnerStats = new ArrayList<String>();
-    ArrayList<String> thiefStats = new ArrayList<String>();
+    ArrayList<String> adventurerStats = new ArrayList<String>();
 
-    Tracker() {
+    private static Tracker uniqueInstance = new Tracker();
+
+    public static Tracker getTracker() {
+        return uniqueInstance;
+    }
+
+    private Tracker() {
         outputFile = openFile(fileName);
     }
 
@@ -173,53 +177,19 @@ class Tracker implements Observer {
 
     // helper function for processEvent. needed so that tracker values aren't all set to null when an adventurer dies
     private void updateAdventurerStats(HashMap<String, String> event) {
-        if (event.get("BLocation") != null) { // only enters if the brawler is still alive since all brawler keys are null when they're dead.
-            if (!brawlerStats.isEmpty()) { // clears out the previous data in brawlerStats if it existed
-                brawlerStats.clear();
+        String adventurerName = event.get("advName");
+        if (adventurerName != null) { // only enters if the adventurer is still alive since all adventurer keys are null when they're dead.
+            if (!adventurerStats.isEmpty()) { // clears out the previous data in adventurerStats if it existed
+                adventurerStats.clear();
             }
-            // updates brawlerStats to their most recent stats at the end of a turn. 
-            brawlerStats.add(event.get("BLocation"));
-            brawlerStats.add(event.get("BHealth"));
-            brawlerStats.add(event.get("BTreasure"));
+            // updates adventurerStats to their most recent stats at the end of a turn.
+            adventurerStats.add(adventurerName);
+            adventurerStats.add(event.get(adventurerName + "Location"));
+            adventurerStats.add(event.get(adventurerName + "Health"));
+            adventurerStats.add(event.get(adventurerName + "Treasure"));
         }
         else { // the adventurer died so their health should be set to 0, but change nothing else to preserve their final stats in Tracker output
-            if (brawlerStats.get(1) != "0") brawlerStats.set(1, "0"); // only enters the first time the adventurer died
-        }
-
-        if (event.get("SLocation") != null) {
-            if (!sneakerStats.isEmpty()) {
-                sneakerStats.clear();
-            }
-            sneakerStats.add(event.get("SLocation"));
-            sneakerStats.add(event.get("SHealth"));
-            sneakerStats.add(event.get("STreasure"));
-        }
-        else {
-            if (sneakerStats.get(1) != "0") sneakerStats.set(1, "0");
-        }
-
-        if (event.get("RLocation") != null) {
-            if (!runnerStats.isEmpty()) {
-                runnerStats.clear();
-            }
-            runnerStats.add(event.get("RLocation"));
-            runnerStats.add(event.get("RHealth"));
-            runnerStats.add(event.get("RTreasure"));
-        }
-        else {
-            if (runnerStats.get(1) != "0") runnerStats.set(1, "0");
-        }
-
-        if (event.get("TLocation") != null) {
-            if (!thiefStats.isEmpty()) {
-                thiefStats.clear();
-            }
-            thiefStats.add(event.get("TLocation"));
-            thiefStats.add(event.get("THealth"));
-            thiefStats.add(event.get("TTreasure"));
-        }
-        else {
-            if (thiefStats.get(1) != "0") thiefStats.set(1, "0");
+            if (adventurerStats.get(2) != "0") adventurerStats.set(2, "0"); // only enters the first time the adventurer died
         }
     }
 
@@ -238,16 +208,9 @@ class Tracker implements Observer {
             statusUpdate += "==========  Turn " + event.get("turn") + "  ==========" + nl + nl;
             statusUpdate += "Total Active Adventurers: " + event.get("totalAdv") + nl;
 
-            //
             String currLine = String.format(advFormat, "ADVENTURERS", "ROOM", "HEALTH", "TREASURE") + nl;
             statusUpdate += currLine;
-            currLine = String.format(advFormat, "Brawler", brawlerStats.get(0), brawlerStats.get(1), brawlerStats.get(2)) + nl;
-            statusUpdate += currLine;
-            currLine = String.format(advFormat, "Sneaker", sneakerStats.get(0), sneakerStats.get(1), sneakerStats.get(2)) + nl;
-            statusUpdate += currLine;
-            currLine = String.format(advFormat, "Runner", runnerStats.get(0), runnerStats.get(1), runnerStats.get(2)) + nl;
-            statusUpdate += currLine;
-            currLine = String.format(advFormat, "Thief", thiefStats.get(0), thiefStats.get(1), thiefStats.get(2)) + nl + nl;
+            currLine = String.format(advFormat, adventurerStats.get(0), adventurerStats.get(1), adventurerStats.get(2), adventurerStats.get(3)) + nl + nl;
             statusUpdate += currLine;
             statusUpdate += "Total Active Creatures: " + event.get("totalCre") + nl;
             currLine = String.format(creFormat, "CREATURES", "ROOM") + nl;

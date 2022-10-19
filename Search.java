@@ -2,9 +2,9 @@ import java.util.HashMap;
 import java.util.Random;
 // import com.sun.org.apache.xpath.internal.operations.Bool;
 //Search now includes a strategy pattern for looting
-public class Search {
+abstract class Search {
     String name;
-    int roll = 0;
+    int skillCheck = 0;
 
     /**
      * @param upperbound
@@ -15,7 +15,7 @@ public class Search {
         return randInt.nextInt(upperbound);
     }
     
-    public Boolean checkForTrap(Room room, Adventurer adv) { //check if there is a trap in the room and if there is, trigger it
+    private Boolean checkForTrap(Room room, Adventurer adv) { //check if there is a trap in the room and if there is, trigger it
         Treasure roomTreasure = room.treasure;
         if (roomTreasure.name == "Trap") {
             roomTreasure.treasureAction(adv);
@@ -26,7 +26,7 @@ public class Search {
         return false;
     }
 
-    public Boolean checkForTreasure(Adventurer adv, Treasure tre) { //check if the treasure in the room is already owned by the adventurer
+    private Boolean checkForTreasure(Adventurer adv, Treasure tre) { //check if the treasure in the room is already owned by the adventurer
         for (int i = 0; i <adv.treasures.size(); i++) {
             if (adv.treasures.get(tre.name) == true) {
                 return true;
@@ -46,16 +46,14 @@ public class Search {
                 searchSuccess = true;
             }
             else {
-                if(!checkForTreasure(adv, room.treasure)) { //check if there is a trap in the room and if the treasure is already owned by the adventurer
-                    roll = ((getRandInt(6) + 1) + (getRandInt(6) + 1));
-                    if (roll >= 7) {
-                        adv.ownedTreasures.add(curTres); //add the treasure to the adventurer's list of owned treasures
-                        adv.board.unFoundTreasures.remove(curTres); //remove the treasure from the list of unowned treasures
+                if(!checkForTreasure(adv, room.treasure)) { //check if the treasure is already owned by the adventurer
+                    int roll = ((getRandInt(6) + 1) + (getRandInt(6) + 1));
+                    if (roll >= skillCheck) {
                         room.treasure = null;
                         searchItem = "Treasure";
                         searchSuccess = true;
-                        curTres.treasureAction(adv);  //perform the action of the treasure
-
+                        adv.board.unFoundTreasures.remove(curTres); //remove the treasure from the list of unowned treasures
+                        curTres.treasureAction(adv);  //perform the action of the treasure, this also adds the treasure to the adventurer
                     }
                 }
             }
@@ -69,77 +67,20 @@ public class Search {
 class Careful extends Search {
     Careful() {
         name = "Careful";
-        roll = 0;
-    }
-
-    @Override
-    public HashMap<String, Boolean> loot(Adventurer adv, Room room) {
-        String searchItem = "";
-        Boolean searchSuccess = false;
-        HashMap<String, Boolean> searchResult = new HashMap<String, Boolean>();
-        if (room.treasure != null) { //check if there is a treasure in the room
-            Treasure curTres = room.treasure;
-            if (checkForTrap(room, adv)) { // the adventurer triggered a trap
-                searchItem = "Trap";
-                searchSuccess = true;
-            }
-            else {
-                if(!checkForTreasure(adv, room.treasure)) { //check if the treasure is already owned by the adventurer
-                    roll = ((getRandInt(6) + 1) + (getRandInt(6) + 1));
-                    if (roll >= 4) {
-                        adv.ownedTreasures.add(curTres);
-                        adv.board.unFoundTreasures.remove(curTres);
-                        room.treasure = null;
-                        searchItem = "Treasure";
-                        searchSuccess = true;
-                        curTres.treasureAction(adv);
-                    }
-                }
-            }
-        }
-        searchResult.put(searchItem, searchSuccess);
-        return searchResult;
+        skillCheck = 4;
     }
 }
 
 class Quick extends Search {
     Quick() {
-        name = "Careful";
-    }
-
-    @Override
-    public HashMap<String, Boolean> loot(Adventurer adv, Room room) {
-        String searchItem = "";
-        Boolean searchSuccess = false;
-        HashMap<String, Boolean> searchResult = new HashMap<String, Boolean>();
-
-        if (room.treasure != null) {
-            Treasure curTres = room.treasure;
-            if (checkForTrap(room, adv)) { // the adventurer triggered a trap
-                searchItem = "Trap";
-                searchSuccess = true;
-            }
-            else {
-                if(!checkForTreasure(adv, room.treasure)) { //check if the treasure is already owned by the adventurer
-                    roll = ((getRandInt(6) + 1) + (getRandInt(6) + 1));
-                    if (roll >=6) {
-                        adv.ownedTreasures.add(curTres);
-                        adv.board.unFoundTreasures.remove(curTres);
-                        room.treasure = null;
-                        searchItem = "Treasure";
-                        searchSuccess = true;
-                        curTres.treasureAction(adv);
-                    }
-                }
-            }
-        }
-        searchResult.put(searchItem, searchSuccess);
-        return searchResult;
+        name = "Quick";
+        skillCheck = 6;
     }
 }
 
 class Careless extends Search {
     Careless() {
         name = "Careless";
+        skillCheck = 7;
     }
 }

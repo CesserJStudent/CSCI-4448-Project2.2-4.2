@@ -1,4 +1,4 @@
-import java.util.Locale;
+// import java.util.Locale;
 import java.util.Scanner;
 
 public class AdventurerCommand {
@@ -30,15 +30,36 @@ class MoveCommand extends AdventurerCommand {
     void execute() {
         if(curAdv instanceof Runner) {
             curAdv.move();
-            Scanner commandScan = new Scanner(System.in);
-            System.out.println("Would you like to move again");
+            runner.addEvent("advMove", curAdv, null);
+            escapeDamage();
+            if (curAdv.health <= 0) {
+                return; // prevents zombie runner turns
+            }
+            GameBoard.getBoard().printBoard();
+            Scanner commandScan = UserInput.getInput().getScanner();
+            System.out.println("Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)");
             String chooseCommand = commandScan.nextLine();
             if(chooseCommand.equalsIgnoreCase("yes") || chooseCommand.equalsIgnoreCase("y")) {
-                curAdv.move();
+                curAdv.move(); // no fleeDamage necessary for second runner movement
+                runner.addEvent("advMove", curAdv, null);
             }
         }
         else {
             curAdv.move();
+            runner.addEvent("advMove", curAdv, null);
+            escapeDamage();
+        }
+    }
+    
+    private void escapeDamage() {
+        int damage = 0;
+        if (curRoom.hasCreature()) {
+            damage += curRoom.creaturesPresent.size();
+        }
+        if (damage > 0) {
+            curAdv.health -= damage;
+            runner.addEvent("advHurt", curAdv, null);
+            runner.checkForAdvDeath(curAdv, curRoom);
         }
     }
 }
@@ -52,6 +73,7 @@ class CelebrateCommand extends AdventurerCommand {
     @Override
     void execute() {
         System.out.println(curAdv.name + " celebrates: " + runner.decorateAdv(curAdv));
+        runner.addEvent("advCelebrate", curAdv, null);
     }
 }
 

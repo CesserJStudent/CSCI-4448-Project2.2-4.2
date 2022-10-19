@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 // OBSERVER: By implementing Subject, GameRunner now publishes and sends out events to all registered observers
 public class GameRunner implements Subject{
-    GameBoard playSpace = new GameBoard(); //create game board
+    GameBoard playSpace = GameBoard.getBoard(); // gets the singleton GameBoard that was eagerly instantiated
+    Scanner userInput = UserInput.getInput().getScanner(); // gets the singleton UserInput to initialize a Scanner object
     ArrayList<Adventurer> aliveAdventurers = new ArrayList<Adventurer>();   // list of alive adventurers
     ArrayList<Creature> aliveCreatures = new ArrayList<Creature>();         // list of alive creatures
     ArrayList<Observer> observers = new ArrayList<Observer>();              // list of current observers
@@ -53,14 +54,15 @@ public class GameRunner implements Subject{
             String advLocation = Arrays.toString(adv.location);
             String advHealth = String.valueOf(adv.health);
             String advTreasure = "";
-            for (int j = 0; j < adv.ownedTreasures.size(); j++) {
-                if (j == adv.ownedTreasures.size() - 1) {    // if the last treasure, don't append a ", " to the end of it
-                    advTreasure += adv.ownedTreasures.get(j).name;
-                }
-                else {
-                    advTreasure += adv.ownedTreasures.get(j).name + ", ";
+            for (String j : adv.treasures.keySet()) {
+                if (adv.treasures.get(j)) { // if the adventurer owns the treasure, add it to advTreasure
+                    advTreasure += j + ", ";
                 }
             }
+            if (advTreasure != "") {
+                advTreasure = advTreasure.substring(0, advTreasure.length() - 2); // removes the last ", " from advTreasure if it was populated
+            }
+            statusUpdate.put("advName", advName); // passes the adventurer's name since names are now variable
             statusUpdate.put(advName + "Location", advLocation);
             statusUpdate.put(advName + "Health", advHealth);
             statusUpdate.put(advName + "Treasure", advTreasure);
@@ -84,54 +86,35 @@ public class GameRunner implements Subject{
      * @param adv The adventurer involved in the event, if any exists
      * @param cre The creature involved in the event, if any exists
      */
-    private void addEvent(String eventType, Adventurer adv, Creature cre) {
+    protected void addEvent(String eventType, Adventurer adv, Creature cre) {
         if (!event.isEmpty()) event.clear();     // clears out the past event, if it exists
         event.put("eventType", eventType);  // adds the type of event with key "eventType"
         
         switch(eventType) {
-            case "advMove":                 // adds the adventurer's name and location with keys "advName" and "location" respectively
+            case "advMove":                                // adds the adventurer's name and location with keys "advName" and "location" respectively
                 event.put("advName", adv.name);
                 event.put("location", Arrays.toString(adv.location));
                 break;
-            case "advWin":                      // adds the adventurer's name and creature's name for both wins and losses. keys are "advName" and "creName"
+            case "advWin", "advLoss":                      // adds the adventurer's name and creature's name for both wins and losses. keys are "advName" and "creName"
                 event.put("advName", adv.name);
                 event.put("creName", cre.name);
                 break;
-            case "advLoss":                      // adds the adventurer's name and creature's name for both wins and losses. keys are "advName" and "creName"
-                event.put("advName", adv.name);
-                event.put("creName", cre.name);
-                break;
-            case "advHurt":                     // adds the adventurer's name and health for both events. keys are "advName" and "advHealth"
+            case "advHurt", "advHeal":                     // adds the adventurer's name and health for both events. keys are "advName" and "advHealth"
                 event.put("advName", adv.name);
                 event.put("advHealth", String.valueOf(adv.health));
                 break;
-            case "advHeal":                     // adds the adventurer's name and health for both events. keys are "advName" and "advHealth"
-                event.put("advName", adv.name);
-                event.put("advHealth", String.valueOf(adv.health));
-                break;
-            case "advDeath":  // these 3 events only require the adventurer's name
-                event.put("advName", adv.name);
-                break;
-            case "foundTrap":  // these 3 events only require the adventurer's name
-                event.put("advName", adv.name);
-                break;
-            case "advCelebrate":  // these 3 events only require the adventurer's name
+            case "advDeath", "advCelebrate", "foundTrap":  // these 3 events only require the adventurer's name
                 event.put("advName", adv.name);
                 break;
             case "foundTreasure":           // adds the adventurer's name and found treasure's name. keys are "advName" and "treasureName"
                 event.put("advName", adv.name);
-                String foundTreasureName = adv.ownedTreasures.get(adv.ownedTreasures.size() - 1).name;
-                event.put("treasureName", foundTreasureName);
+                event.put("treasureName", adv.mostRecentTreasure);
                 break;
             case "creMove":                 // creature events are handled the same as adventurer events. equivalent keys are prefixed with "cre" instead of "adv"
                 event.put("creName", cre.name);
                 event.put("location", Arrays.toString(cre.location));
                 break;
-            case "creWin":
-                event.put("creName", cre.name);
-                event.put("advName", adv.name);
-                break;
-            case "creLoss":
+            case "creWin", "creLoss":
                 event.put("creName", cre.name);
                 event.put("advName", adv.name);
                 break;
@@ -169,13 +152,12 @@ public class GameRunner implements Subject{
         Integer[] startI = new Integer[]{0, 1, 1};
         Room startR = playSpace.getRoomAt(startI);
         //Ask to choose adventurer
-        Scanner playerScan = new Scanner(System.in);
-        System.out.println("Choose an Adventurer: Brawler, Sneaker, Runner, Thief");
-        String choosePlayer = playerScan.nextLine();
-        System.out.println("Create a name for your Adventurer");
-        String chooseName = playerScan.nextLine();
+        System.out.println("Choose an Adventurer: (Brawler, Sneaker, Runner, or Thief)");
+        String choosePlayer = userInput.nextLine();
+        System.out.println("Name your Adventurer!");
+        String chooseName = userInput.nextLine();
         AdventurerFactory advFactory = new AdventurerFactory();
-        startR.addAdventurer(advFactory.newAdv(choosePlayer, playSpace, chooseName));
+        startR.addAdventurer(advFactory.newAdv(choosePlayer, chooseName));
         //add Creatures to the board
         CreatureFactory creFactory = new CreatureFactory();
         for (int i = 0; i < 4; i++) {
@@ -196,19 +178,19 @@ public class GameRunner implements Subject{
             }
             Integer[] curLoc = new Integer[]{x, y, z};
             // IDENTITY: Even though multiple Orbiter objects are added with the same name "ob", each one has its own unique identity to distinguish itself from others.
-            Creature ob = creFactory.newCreature("Orbiter", playSpace, curLoc);
+            Creature ob = creFactory.newCreature("Orbiter", curLoc);
             playSpace.getRoomAt(curLoc).addCreature(ob); // add orbiter to board
             aliveCreatures.add(ob); //add orbiter to aliveCreatures
 
             curLoc = getRandRoom(); //get random room for seeker placement
-            Creature sk = creFactory.newCreature("Seeker", playSpace, curLoc);
+            Creature sk = creFactory.newCreature("Seeker", curLoc);
             playSpace.getRoomAt(curLoc).addCreature(sk); // add Seeker to board
             aliveCreatures.add(sk); //add Seeker to aliveCreatures
 
             y = getRandInt(3); //set y for blinker placement
             z = getRandInt(3); //set z for blinker placement
             curLoc = new Integer[]{4, y, z};
-            Creature bk = creFactory.newCreature("Blinker", playSpace, curLoc);
+            Creature bk = creFactory.newCreature("Blinker", curLoc);
             playSpace.getRoomAt(curLoc).addCreature(bk); // add Blinker to board
             aliveCreatures.add(bk); //add Blinker to aliveCreatures
 
@@ -259,18 +241,7 @@ public class GameRunner implements Subject{
         }
     }
 
-    public Boolean checkAndRunPortal(Adventurer adv) {
-        for(int i = 0; i < adv.ownedTreasures.size(); i++) {
-            if (adv.ownedTreasures.get(i) instanceof Portal) {
-                adv.ownedTreasures.get(i).treasureAction(adv);
-                addEvent("advMove", adv, null);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void checkForAdvDeath(Adventurer adv, Room room) {
+    protected void checkForAdvDeath(Adventurer adv, Room room) {
         if (adv.health <= 0) { //if adventurer dies, remove from aliveAdventurers and room
             room.removeAdventurer(adv);
             aliveAdventurers.remove(adv);
@@ -326,13 +297,19 @@ public class GameRunner implements Subject{
                 aliveCreatures.remove(curCre);
                 addEvent("advWin", curAdv, curCre);
                 addEvent("creDeath", null, curCre);
-                addEvent("advCelebrate", curAdv, null);
-                System.out.println(curAdv.name + " celebrates: " + decorateAdv(curAdv));
             }
             else if (winner != null) { //if creature wins
-                curAdv.health -= 1; //if adventurer loses, reduce health by 1
                 addEvent("advLoss", curAdv, curCre);
-                addEvent("advHurt", curAdv, null);
+                if (curAdv.combat.name == "Stealth") {
+                    if (getRandInt(2) == 0) { // 50% chance to take damage. equivalent to 50% chance to avoid damage
+                        curAdv.health -=1;
+                        addEvent("advHurt", curAdv, null);
+                    }
+                }
+                else {
+                    curAdv.health -= 1; //if adventurer loses, reduce health by 1
+                    addEvent("advHurt", curAdv, null);
+                }
             }
         }
         checkForAdvDeath(curAdv, curRoom);
@@ -352,13 +329,19 @@ public class GameRunner implements Subject{
                 aliveCreatures.remove(curCre);
                 addEvent("creLoss", curAdv, curCre);
                 addEvent("creDeath", null, curCre);
-                addEvent("advCelebrate", curAdv, null);
-
             }
             else if(winner != null) { //if creature wins
-                curAdv.health -= 1; //if adventurer loses, reduce health by 1
                 addEvent("creWin", curAdv, curCre);
-                addEvent("advHurt", curAdv, null);
+                if (curAdv.combat.name == "Stealth") {
+                    if (getRandInt(2) == 0) { // 50% chance to take damage. equivalent to 50% chance to avoid damage
+                        curAdv.health -=1;
+                        addEvent("advHurt", curAdv, null);
+                    }
+                }
+                else {
+                    curAdv.health -= 1; // adventurer lost, reduce health by 1
+                    addEvent("advHurt", curAdv, null);
+                }
             }
             checkForAdvDeath(curAdv, curRoom);
         }
@@ -390,8 +373,7 @@ public class GameRunner implements Subject{
         HashMap<String, Boolean> searchResult = curAdv.search.loot(curAdv, curRoom); // performs a search and returns the result
         if (searchResult.get("Treasure") != null) {             // enters if the adventurer found a treasure
             addEvent("foundTreasure", curAdv, null);
-            String foundTreasureName = curAdv.ownedTreasures.get(curAdv.ownedTreasures.size() - 1).name;
-            if (foundTreasureName == "Potion") {
+            if (curAdv.mostRecentTreasure == "Potion") {
                 addEvent("advHeal", curAdv, null);
             }
         }
@@ -410,24 +392,42 @@ public class GameRunner implements Subject{
         printStats(); //print stats
         CommandExecutor executeC = new CommandExecutor();
         System.out.println("Your turn, " + curAdv.name + "!");
-        checkAdvActions(curRoom); //check adventurer actions
-        Scanner commandScan = new Scanner(System.in);
-        System.out.println("Please select an action");
-        String chooseCommand = commandScan.nextLine();
+        HashMap <String, Boolean> validActions = checkAdvActions(curRoom); //check adventurer actions
+        String invalidAction = "That action is currently unavailable! Try again. \n";
+        System.out.println("Please enter an available action.");
+        String chooseCommand = userInput.nextLine();
         switch (chooseCommand.toLowerCase()) {
-            case "move":
+            case "move", "<move>":
                 executeC.executeCommand(new MoveCommand(curAdv, curRoom, this));
                 break;
-            case "search":
-                executeC.executeCommand(new SearchCommand(curAdv, curRoom, this));
+            case "search", "<search>":
+                if (validActions.get("search")) {
+                    executeC.executeCommand(new SearchCommand(curAdv, curRoom, this));
+                }
+                else {
+                    System.out.println(invalidAction);
+                    adventurerTurn(curAdv, curRoom);
+                }
                 break;
-            case "fight":
-                executeC.executeCommand(new FightCommand(curAdv, curRoom, this));
+            case "fight", "<fight>":
+                if (validActions.get("fight")) {
+                    executeC.executeCommand(new FightCommand(curAdv, curRoom, this));
+                }
+                else {
+                    System.out.println(invalidAction);
+                    adventurerTurn(curAdv, curRoom);
+                }
                 break;
-            case "celebrate":
-                executeC.executeCommand(new CelebrateCommand(curAdv, curRoom, this));
+            case "celebrate", "<celebrate>":
+                if (validActions.get("celebrate")) {
+                    executeC.executeCommand(new CelebrateCommand(curAdv, curRoom, this));
+                }
+                else {
+                    System.out.println(invalidAction);
+                    adventurerTurn(curAdv, curRoom);
+                }
                 break;
-            case "quit":
+            case "quit", "<quit>", "q":
                 System.out.println("Thanks for playing!");
                 System.exit(0);
                 break;
@@ -438,13 +438,28 @@ public class GameRunner implements Subject{
 
 
     }
-    public void checkAdvActions(Room curRoom) {
+    private HashMap<String, Boolean> checkAdvActions(Room curRoom) {
+        HashMap<String, Boolean> availableActions = new HashMap<String, Boolean>() {{
+            put("move", true);
+            put("quit", true);
+            put("fight", false);
+            put("search", false);
+            put("celebrate", false);
+        }};
+        System.out.println("<move> and <quit> are always available.");
         if(curRoom.hasCreature()) {
-            System.out.println("The room has a creature. Your actions are Fight, Move or Quit.");
+            availableActions.replace("fight", true);
+            System.out.println("This room has a creature... <fight> is available.");
         }
         else {
-            System.out.println("The room has no creature. Your actions are Search, Move, Celebrate or Quit.");
+            if (curRoom.treasure != null) {
+                availableActions.replace("search", true);
+                System.out.println("This room contains a treasure! <search> is available.");
+            }
+            availableActions.replace("celebrate", true);
+            System.out.println("This room has no creatures. <celebrate> is available.");
         }
+        return availableActions;
 
     }
     public void adventurerAction() {
@@ -468,22 +483,26 @@ public class GameRunner implements Subject{
         Integer[] startI = new Integer[]{0, 1, 1};
         Room startR = playSpace.getRoomAt(startI);
         if (aliveAdventurers.size() == 0) { //game over if all adventurers die
-            System.out.printf("You died! \n");
+            System.out.printf("Defeat... You died! \n");
             return true;
         }
-        else if (aliveAdventurers.get(0).ownedTreasures.size() >= 5 && startR.hasAdventurer()) { //game over if one of each treasure is found
-            if(aliveAdventurers.get(0).treasures.get("Trap") != false) {
-                System.out.printf("All treasure found \n");
-                return true;
+        else if (startR.hasAdventurer()) { //game over if adventurer returns to the starting room
+            Boolean treasureCheck = true; // checks if the adventurer gathered all the treasures
+            for (Boolean i : aliveAdventurers.get(0).treasures.values()) {
+                if (i == false) {   // any treasure that hasn't been found will have a false value
+                    treasureCheck = false;
+                }
             }
-            return false;
-        }
-        else if (startR.hasAdventurer()) { //game over if creatures are eliminated
-            System.out.printf("You lose. Returned to start without all treasures.  \n");
+            if (treasureCheck) {    // if all the adventurer owns all the treasures
+                System.out.println("Victory! Returned home with all treasures!");
+            }
+            else {                  // else a treasure was missing
+                System.out.println("Defeat... Returned to start without all treasures.");
+            }
             return true;
         }
         else if (aliveCreatures.size() == 0) { //game over if creatures are eliminated
-            System.out.printf("All Creatures eliminated \n");
+            System.out.println("Victory! All Creatures eliminated!");
             return true;
         }
         else {
@@ -495,9 +514,16 @@ public class GameRunner implements Subject{
         //print stats for Adventurers
         for(int i = 0; i < aliveAdventurers.size(); i++) {
             Adventurer curAdv = aliveAdventurers.get(i);
-            System.out.println(curAdv.name + " has " + curAdv.health + " health.");
-            for (int j = 0; j < curAdv.ownedTreasures.size(); j++) {
-                System.out.println(curAdv.name + " has " + curAdv.ownedTreasures.get(j).name);
+            System.out.println("\n" + curAdv.name + " has " + curAdv.health + " health.");
+            String gatheredTreasures = "";
+            for (String j : curAdv.treasures.keySet()) {
+                if (curAdv.treasures.get(j)) { // if the adventurer owns the treasure, add it to gatheredTreasures
+                    gatheredTreasures += j + ", ";
+                }
+            }
+            if (gatheredTreasures != "") {
+                gatheredTreasures = gatheredTreasures.substring(0, gatheredTreasures.length() - 2); // removes the last ", " from advTreasure if it was populated
+                System.out.println(curAdv.name + " has collected the following treasures: " + gatheredTreasures);
             }
         }
 
@@ -518,10 +544,10 @@ public class GameRunner implements Subject{
             }
         }
         //print stats for creatures and treasure
-        System.out.println("OB: " + obC + " Remaining");
+        System.out.println("\n" + "OB: " + obC + " Remaining");
         System.out.println("SK: " + skC + " Remaining");
         System.out.println("BK: " + bkC + " Remaining");
-        System.out.println("Total Treasure: " + playSpace.unFoundTreasures.size());
+        System.out.println("Remaining Treasure: " + playSpace.unFoundTreasures.size() + "\n");
     }
 
     // function to delete subdirectories and files. taken from https://www.geeksforgeeks.org/java-program-to-delete-a-directory/
@@ -530,7 +556,7 @@ public class GameRunner implements Subject{
         // inside directory
         for (File subfile : file.listFiles()) {
             // if it is a subfolder,e.g Rohan and Ritik,
-            // recursiley call function to empty subfolder
+            // recursively call function to empty subfolder
             if (subfile.isDirectory()) {
                 deleteDirectory(subfile);
             }
@@ -544,30 +570,30 @@ public class GameRunner implements Subject{
         if (!directory.mkdirs()) {
             deleteDirectory(directory);
         }
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getTracker();
         registerObserver(tracker);
 
-        playSpace.init_game(5, 3, 3); //init game
         placePlayers(); //place players
         placeTreasure(); //place treasure
         Boolean gO = false; //game over set to false
         // System.out.println("Hello! Welcome to RotLA. This key will help you get to know the characters. B = Brawler, S = Sneaker, R = Runner, T = Thief, OB = Orbiter, SK = Seeker, and BK = Blinker. The game will now begin.");
         // playSpace.printBoard();
         while (!gO) {
-            //Logger log = new Logger(turn);
-            //registerObserver(log);
+            Logger log = Logger.getInstance(turn);
+            registerObserver(log);
 
             actionRunner(); //run actions
             //playSpace.printBoard(); //print board
             //printStats(); //print stats
             gO = gameOver(); //check if game is over
 
-            //addEvent("turnEnd", null, null);
+            addEvent("turnEnd", null, null);
             turn++;
-            //removeObserver(log);
+            removeObserver(log);
         }
-        //addEvent("gameEnd", null, null);
-        //removeObserver(tracker);
+        addEvent("gameEnd", null, null);
+        removeObserver(tracker);
+        userInput.close();
     }
 
 

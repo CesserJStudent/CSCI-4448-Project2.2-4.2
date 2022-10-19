@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 abstract class Creature {
-    protected GameBoard board;
+    protected GameBoard board = GameBoard.getBoard();
     protected ArrayList<Integer[]> validRooms;
     protected Integer[] location;
     protected String name;
@@ -65,8 +65,7 @@ abstract class Creature {
  * A creature who circles the outer rooms of the level they are on, whether connected or not. They will always start in an outer room on any of the four levels.
 */
 class Orbiter extends Creature {
-    Orbiter(GameBoard gb, Integer[] loc) {
-        board = gb;
+    Orbiter(Integer[] loc) {
         validRooms = getValidRooms(loc[0]);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
         location = loc;  // sets the starting location to a random valid room
         name = "OB"; //set name
@@ -87,8 +86,7 @@ class Orbiter extends Creature {
 }
 
 class Seeker extends Creature {
-    Seeker(GameBoard gb, Integer[] loc){
-        board = gb;
+    Seeker(Integer[] loc){
         validRooms = getValidRooms(loc[0]);     // sets validRooms to the ArrayList gatValidRooms returns. this varies by creature and starting level
         location = loc;  // sets the starting location to a random valid room
         name = "SK"; //set name
@@ -129,8 +127,7 @@ class Seeker extends Creature {
 }
 
 class Blinker extends Creature {
-    Blinker(GameBoard gb, Integer[] loc){
-        board = gb;
+    Blinker(Integer[] loc){
         validRooms = getAllRooms(4);
         location = loc; // sets the starting location to a random room from startingRooms
         name = "BK"; //set name

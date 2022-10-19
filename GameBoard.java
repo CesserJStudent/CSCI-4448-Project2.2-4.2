@@ -4,11 +4,16 @@ import java.util.HashMap;
 
 // COHESION: The GameBoard class has high cohesion since its only purpose is to initialize the board, print the board, and get information on a Room within the board
 public class GameBoard {
+    private static GameBoard uniqueInstance = new GameBoard(5, 3, 3);
 
-    ArrayList<ArrayList<ArrayList<Room>>> board = new ArrayList<>();
+    public static GameBoard getBoard() {
+        return uniqueInstance;
+    }
+
+    private ArrayList<ArrayList<ArrayList<Room>>> board = new ArrayList<>();
     ArrayList<Treasure> unFoundTreasures = new ArrayList<Treasure>(); //list of unfound treasures
 
-    public void init_game(int x_axis, int y_axis, int z_axis) {
+    private GameBoard(int x_axis, int y_axis, int z_axis) {
         for (Integer i = 0; i < x_axis; i++) {
             board.add(new ArrayList<ArrayList<Room>>(y_axis)); //create list for each floor level
             for (Integer j = 0; j < y_axis; j++) {
@@ -94,7 +99,7 @@ public class GameBoard {
                             board.get(i).get(j).add(new Room(up, down, right, left, above, below));
                         }
                         //adjacent rooms for below center room
-                        else if(h == 2 && j == 1) {
+                        else if(h == 1 && j == 2) {
                             Integer[] up = {i, 1, 1};
                             Integer[] down = null;
                             Integer[] right = {i, 2, 2};
