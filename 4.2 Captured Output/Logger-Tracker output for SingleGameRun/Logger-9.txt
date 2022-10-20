@@ -1,0 +1,9 @@
+okay has found a trap...
+okay has been hurt! Their health is now 8.
+Orbiter has moved to room [4, 1, 0].
+Blinker has moved to room [4, 1, 0].
+Orbiter has moved to room [4, 0, 0].
+Blinker has moved to room [2, 0, 0].
+Orbiter has moved to room [1, 1, 0].
+Blinker has moved to room [4, 0, 0].
+Blinker has moved to room [3, 2, 2].

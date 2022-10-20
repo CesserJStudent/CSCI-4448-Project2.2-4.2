@@ -57,7 +57,7 @@ abstract class Adventurer {
             System.out.printf(", " + validDirections.get(i));                    // prints all valid directions
         }
         System.out.printf("%n");
-        System.out.println("Please enter a direction to move in.");
+        System.out.println("Please enter a direction to move in...");
         Scanner directionScan = UserInput.getInput().getScanner();
         String direction = directionScan.nextLine();
         board.getRoomAt(location).removeAdventurer(this);                   // removes the adventurer from the previous room before updating location

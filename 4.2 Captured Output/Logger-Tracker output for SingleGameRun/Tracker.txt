@@ -1,0 +1,341 @@
+==========  Turn 1  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [1, 0, 1]       | 10         | 
+
+Total Active Creatures: 12
+CREATURES            | ROOM           
+Orbiter              | [4, 2, 1]      
+Seeker               | [1, 2, 2]      
+Blinker              | [3, 0, 2]      
+Orbiter              | [4, 0, 0]      
+Seeker               | [4, 1, 2]      
+Blinker              | [2, 0, 1]      
+Orbiter              | [1, 1, 0]      
+Seeker               | [2, 2, 0]      
+Blinker              | [1, 1, 1]      
+Orbiter              | [3, 2, 1]      
+Seeker               | [1, 1, 0]      
+Blinker              | [1, 1, 0]      
+
+==========  Turn 2  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [3, 2, 2]       | 10         | Portal
+
+Total Active Creatures: 12
+CREATURES            | ROOM           
+Orbiter              | [4, 0, 2]      
+Seeker               | [1, 2, 2]      
+Blinker              | [1, 1, 1]      
+Orbiter              | [4, 0, 2]      
+Seeker               | [4, 1, 2]      
+Blinker              | [2, 1, 0]      
+Orbiter              | [1, 2, 1]      
+Seeker               | [2, 2, 0]      
+Blinker              | [2, 0, 1]      
+Orbiter              | [3, 1, 2]      
+Seeker               | [1, 1, 0]      
+Blinker              | [4, 1, 1]      
+
+==========  Turn 3  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [3, 2, 1]       | 10         | Portal
+
+Total Active Creatures: 12
+CREATURES            | ROOM           
+Orbiter              | [4, 2, 0]      
+Seeker               | [1, 2, 2]      
+Blinker              | [4, 1, 0]      
+Orbiter              | [4, 2, 2]      
+Seeker               | [4, 1, 2]      
+Blinker              | [3, 1, 2]      
+Orbiter              | [1, 0, 0]      
+Seeker               | [2, 2, 0]      
+Blinker              | [2, 2, 1]      
+Orbiter              | [3, 2, 2]      
+Seeker               | [1, 1, 0]      
+Blinker              | [3, 2, 2]      
+
+==========  Turn 4  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [3, 2, 1]       | 10         | Armor, Portal
+
+Total Active Creatures: 12
+CREATURES            | ROOM           
+Orbiter              | [4, 1, 2]      
+Seeker               | [1, 2, 2]      
+Blinker              | [4, 1, 2]      
+Orbiter              | [4, 1, 2]      
+Seeker               | [4, 1, 2]      
+Blinker              | [3, 0, 0]      
+Orbiter              | [1, 0, 1]      
+Seeker               | [2, 2, 0]      
+Blinker              | [2, 1, 1]      
+Orbiter              | [3, 1, 0]      
+Seeker               | [1, 1, 0]      
+Blinker              | [2, 0, 1]      
+
+==========  Turn 5  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [3, 1, 0]       | 9          | Armor, Portal
+
+Total Active Creatures: 12
+CREATURES            | ROOM           
+Orbiter              | [4, 0, 1]      
+Seeker               | [1, 2, 2]      
+Blinker              | [4, 2, 0]      
+Orbiter              | [4, 0, 1]      
+Seeker               | [4, 1, 2]      
+Blinker              | [3, 1, 1]      
+Orbiter              | [1, 0, 2]      
+Seeker               | [2, 2, 0]      
+Blinker              | [3, 0, 2]      
+Orbiter              | [3, 1, 0]      
+Seeker               | [1, 1, 0]      
+Blinker              | [2, 1, 0]      
+
+==========  Turn 6  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [3, 1, 0]       | 9          | Armor, Portal
+
+Total Active Creatures: 11
+CREATURES            | ROOM           
+Orbiter              | [4, 2, 2]      
+Seeker               | [1, 2, 2]      
+Blinker              | [4, 2, 1]      
+Orbiter              | [4, 1, 0]      
+Seeker               | [4, 1, 2]      
+Blinker              | [1, 1, 2]      
+Orbiter              | [1, 1, 0]      
+Seeker               | [2, 2, 0]      
+Blinker              | [1, 2, 2]      
+Seeker               | [1, 1, 0]      
+Blinker              | [3, 0, 0]      
+
+==========  Turn 7  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [3, 1, 0]       | 9          | Sword, Armor, Portal
+
+Total Active Creatures: 11
+CREATURES            | ROOM           
+Orbiter              | [4, 1, 2]      
+Seeker               | [1, 2, 2]      
+Blinker              | [4, 1, 0]      
+Orbiter              | [4, 0, 1]      
+Seeker               | [4, 1, 2]      
+Blinker              | [4, 0, 0]      
+Orbiter              | [1, 2, 1]      
+Seeker               | [2, 2, 0]      
+Blinker              | [2, 0, 2]      
+Seeker               | [1, 1, 0]      
+Blinker              | [1, 2, 0]      
+
+==========  Turn 8  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [3, 0, 0]       | 9          | Sword, Armor, Portal
+
+Total Active Creatures: 11
+CREATURES            | ROOM           
+Orbiter              | [4, 0, 1]      
+Seeker               | [1, 2, 2]      
+Blinker              | [3, 2, 2]      
+Orbiter              | [4, 1, 0]      
+Seeker               | [4, 1, 2]      
+Blinker              | [1, 0, 0]      
+Orbiter              | [1, 0, 1]      
+Seeker               | [2, 2, 0]      
+Blinker              | [4, 1, 2]      
+Seeker               | [1, 1, 0]      
+Blinker              | [3, 2, 0]      
+
+==========  Turn 9  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [3, 0, 0]       | 8          | Sword, Armor, Portal, Trap
+
+Total Active Creatures: 11
+CREATURES            | ROOM           
+Orbiter              | [4, 1, 0]      
+Seeker               | [1, 2, 2]      
+Blinker              | [4, 1, 0]      
+Orbiter              | [4, 0, 0]      
+Seeker               | [4, 1, 2]      
+Blinker              | [2, 0, 0]      
+Orbiter              | [1, 1, 0]      
+Seeker               | [2, 2, 0]      
+Blinker              | [4, 0, 0]      
+Seeker               | [1, 1, 0]      
+Blinker              | [3, 2, 2]      
+
+==========  Turn 10  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [3, 1, 1]       | 8          | Sword, Armor, Portal, Trap
+
+Total Active Creatures: 11
+CREATURES            | ROOM           
+Orbiter              | [4, 0, 2]      
+Seeker               | [1, 2, 2]      
+Blinker              | [4, 2, 1]      
+Orbiter              | [4, 0, 2]      
+Seeker               | [4, 1, 2]      
+Blinker              | [2, 2, 0]      
+Orbiter              | [1, 0, 2]      
+Seeker               | [2, 2, 0]      
+Blinker              | [1, 2, 0]      
+Seeker               | [1, 1, 0]      
+Blinker              | [2, 0, 0]      
+
+==========  Turn 11  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [2, 1, 2]       | 8          | Sword, Armor, Portal, Trap
+
+Total Active Creatures: 11
+CREATURES            | ROOM           
+Orbiter              | [4, 0, 1]      
+Seeker               | [1, 2, 2]      
+Blinker              | [1, 0, 1]      
+Orbiter              | [4, 2, 1]      
+Seeker               | [4, 1, 2]      
+Blinker              | [1, 0, 0]      
+Orbiter              | [1, 2, 1]      
+Seeker               | [2, 2, 0]      
+Blinker              | [4, 0, 1]      
+Seeker               | [1, 1, 0]      
+Blinker              | [4, 0, 1]      
+
+==========  Turn 12  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [2, 1, 2]       | 9          | Sword, Potion, Armor, Portal, Trap
+
+Total Active Creatures: 11
+CREATURES            | ROOM           
+Orbiter              | [4, 0, 2]      
+Seeker               | [1, 2, 2]      
+Blinker              | [1, 0, 2]      
+Orbiter              | [4, 2, 0]      
+Seeker               | [4, 1, 2]      
+Blinker              | [2, 2, 1]      
+Orbiter              | [1, 2, 0]      
+Seeker               | [2, 2, 0]      
+Blinker              | [1, 0, 2]      
+Seeker               | [1, 1, 0]      
+Blinker              | [3, 2, 2]      
+
+==========  Turn 13  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [2, 0, 2]       | 9          | Sword, Potion, Armor, Portal, Trap
+
+Total Active Creatures: 11
+CREATURES            | ROOM           
+Orbiter              | [4, 2, 2]      
+Seeker               | [1, 2, 2]      
+Blinker              | [3, 2, 2]      
+Orbiter              | [4, 1, 2]      
+Seeker               | [4, 1, 2]      
+Blinker              | [4, 0, 0]      
+Orbiter              | [1, 1, 0]      
+Seeker               | [2, 2, 0]      
+Blinker              | [1, 1, 0]      
+Seeker               | [1, 1, 0]      
+Blinker              | [4, 0, 0]      
+
+==========  Turn 14  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [2, 0, 2]       | 9          | Sword, Potion, Armor, Portal, Trap, Gem
+
+Total Active Creatures: 10
+CREATURES            | ROOM           
+Orbiter              | [4, 1, 2]      
+Seeker               | [1, 2, 2]      
+Blinker              | [1, 1, 0]      
+Orbiter              | [4, 0, 2]      
+Seeker               | [4, 1, 2]      
+Blinker              | [1, 0, 2]      
+Orbiter              | [1, 0, 2]      
+Seeker               | [2, 2, 0]      
+Blinker              | [3, 1, 2]      
+Seeker               | [1, 1, 0]      
+
+==========  Turn 15  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [2, 0, 2]       | 9          | Sword, Potion, Armor, Portal, Trap, Gem
+
+Total Active Creatures: 10
+CREATURES            | ROOM           
+Orbiter              | [4, 1, 0]      
+Seeker               | [1, 2, 2]      
+Blinker              | [1, 2, 0]      
+Orbiter              | [4, 1, 2]      
+Seeker               | [4, 1, 2]      
+Blinker              | [4, 2, 1]      
+Orbiter              | [1, 1, 0]      
+Seeker               | [2, 2, 0]      
+Blinker              | [4, 2, 0]      
+Seeker               | [1, 1, 0]      
+
+==========  Turn 16  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [2, 1, 1]       | 9          | Sword, Potion, Armor, Portal, Trap, Gem
+
+Total Active Creatures: 10
+CREATURES            | ROOM           
+Orbiter              | [4, 0, 0]      
+Seeker               | [1, 2, 2]      
+Blinker              | [2, 2, 1]      
+Orbiter              | [4, 2, 0]      
+Seeker               | [4, 1, 2]      
+Blinker              | [2, 0, 1]      
+Orbiter              | [1, 2, 1]      
+Seeker               | [2, 2, 0]      
+Blinker              | [4, 0, 0]      
+Seeker               | [1, 1, 0]      
+
+==========  Turn 17  ==========
+
+Total Active Adventurers: 1
+ADVENTURERS          | ROOM            | HEALTH     | TREASURE
+okay                 | [0, 1, 1]       | 9          | Sword, Potion, Armor, Portal, Trap, Gem
+
+Total Active Creatures: 10
+CREATURES            | ROOM           
+Orbiter              | [4, 1, 0]      
+Seeker               | [1, 2, 2]      
+Blinker              | [2, 2, 0]      
+Orbiter              | [4, 0, 2]      
+Seeker               | [4, 1, 2]      
+Blinker              | [4, 1, 0]      
+Orbiter              | [1, 2, 2]      
+Seeker               | [2, 2, 0]      
+Blinker              | [4, 0, 2]      
+Seeker               | [1, 1, 0]      
+

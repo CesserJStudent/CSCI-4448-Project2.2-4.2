@@ -1,17 +1,17 @@
 // import java.util.Locale;
 import java.util.Scanner;
 
-public class AdventurerCommand {
+public abstract class AdventurerCommand {
     GameRunner runner;
     Adventurer curAdv;
     Room curRoom;
-   void execute() {};
+    abstract void execute();
 }
 
 class FightCommand extends AdventurerCommand {
-    FightCommand(Adventurer adv, Room room, GameRunner gRunner) {
+    FightCommand(Adventurer adv, GameRunner gRunner) {
         curAdv = adv;
-        curRoom = room;
+        curRoom = adv.board.getRoomAt(adv.location);
         runner = gRunner;
     }
     @Override
@@ -21,9 +21,9 @@ class FightCommand extends AdventurerCommand {
 }
 
 class MoveCommand extends AdventurerCommand {
-    MoveCommand(Adventurer adv, Room room, GameRunner gRunner) {
+    MoveCommand(Adventurer adv, GameRunner gRunner) {
         curAdv = adv;
-        curRoom = room;
+        curRoom = adv.board.getRoomAt(adv.location);
         runner = gRunner;
     }
     @Override
@@ -40,7 +40,7 @@ class MoveCommand extends AdventurerCommand {
             System.out.println("Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)");
             String chooseCommand = commandScan.nextLine();
             if(chooseCommand.equalsIgnoreCase("yes") || chooseCommand.equalsIgnoreCase("y")) {
-                curAdv.move(); // no fleeDamage necessary for second runner movement
+                curAdv.move(); // no escapeDamage necessary for second runner movement
                 runner.addEvent("advMove", curAdv, null);
             }
         }
@@ -51,6 +51,7 @@ class MoveCommand extends AdventurerCommand {
         }
     }
     
+    // damages an adventurer if they choose to move from a room that has creatures
     private void escapeDamage() {
         int damage = 0;
         if (curRoom.hasCreature()) {
@@ -65,9 +66,9 @@ class MoveCommand extends AdventurerCommand {
 }
 
 class CelebrateCommand extends AdventurerCommand {
-    CelebrateCommand(Adventurer adv, Room room, GameRunner gRunner) {
+    CelebrateCommand(Adventurer adv, GameRunner gRunner) {
         curAdv = adv;
-        curRoom = room;
+        curRoom = adv.board.getRoomAt(adv.location);
         runner = gRunner;
     }
     @Override
@@ -78,9 +79,9 @@ class CelebrateCommand extends AdventurerCommand {
 }
 
 class SearchCommand extends AdventurerCommand {
-    SearchCommand(Adventurer adv, Room room, GameRunner gRunner) {
+    SearchCommand(Adventurer adv, GameRunner gRunner) {
         curAdv = adv;
-        curRoom = room;
+        curRoom = adv.board.getRoomAt(adv.location);
         runner = gRunner;
     }
     @Override

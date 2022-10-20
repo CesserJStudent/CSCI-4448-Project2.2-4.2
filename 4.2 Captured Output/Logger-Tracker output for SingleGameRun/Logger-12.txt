@@ -1,0 +1,9 @@
+okay has found a treasure! They have gained the effects of Potion.
+okay drank a potion and healed! Their health is now 9.
+Orbiter has moved to room [4, 0, 2].
+Blinker has moved to room [1, 0, 2].
+Orbiter has moved to room [4, 2, 0].
+Blinker has moved to room [2, 2, 1].
+Orbiter has moved to room [1, 2, 0].
+Blinker has moved to room [1, 0, 2].
+Blinker has moved to room [3, 2, 2].

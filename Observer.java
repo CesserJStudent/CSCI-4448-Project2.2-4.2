@@ -58,19 +58,22 @@ abstract class Observer {
 class Logger extends Observer {
     static FileWriter outputFile;
     static String fileName;
+
     private static Logger uniqueInstance;
 
     private Logger(int turn) {
         fileName = "Logger-" + turn + ".txt"; 
         outputFile = openFile(fileName);
     }
-
-    public static synchronized Logger getInstance(int turn) {
+    // SINGLETON: Logger lazily instantiates "uniqueInstance" when getInstance() is called
+    public static synchronized Logger getLogger(int turn) {
         if (uniqueInstance == null) {
             uniqueInstance = new Logger(turn);
         }
-        fileName = "Logger-" + turn +".txt";
-        outputFile = openFile(fileName);
+        else {
+            fileName = "Logger-" + turn +".txt";
+            outputFile = openFile(fileName);
+        }
         return uniqueInstance;
     }
     
@@ -152,6 +155,7 @@ class Tracker extends Observer {
     String fileName = "Tracker.txt";
     ArrayList<String> adventurerStats = new ArrayList<String>();
 
+    // SINGLETON: Tracker eagerly instantiates before the first getTracker() call
     private static Tracker uniqueInstance = new Tracker();
 
     public static Tracker getTracker() {

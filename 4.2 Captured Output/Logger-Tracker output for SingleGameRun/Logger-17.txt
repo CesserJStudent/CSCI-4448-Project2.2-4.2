@@ -1,0 +1,8 @@
+okay has moved to room [1, 1, 1].
+okay has moved to room [0, 1, 1].
+Orbiter has moved to room [4, 1, 0].
+Blinker has moved to room [2, 2, 0].
+Orbiter has moved to room [4, 0, 2].
+Blinker has moved to room [4, 1, 0].
+Orbiter has moved to room [1, 2, 2].
+Blinker has moved to room [4, 0, 2].

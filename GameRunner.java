@@ -376,6 +376,9 @@ public class GameRunner implements Subject{
             if (curAdv.mostRecentTreasure == "Potion") {
                 addEvent("advHeal", curAdv, null);
             }
+            else if (curAdv.mostRecentTreasure == "Portal") {
+                addEvent("advMove", curAdv, null);
+            }
         }
         if (searchResult.get("Trap") != null) {                 // enters if the adventurer found a trap
             addEvent("foundTrap", curAdv, null);
@@ -394,15 +397,15 @@ public class GameRunner implements Subject{
         System.out.println("Your turn, " + curAdv.name + "!");
         HashMap <String, Boolean> validActions = checkAdvActions(curRoom); //check adventurer actions
         String invalidAction = "That action is currently unavailable! Try again. \n";
-        System.out.println("Please enter an available action.");
+        System.out.println("Please enter an available action...");
         String chooseCommand = userInput.nextLine();
         switch (chooseCommand.toLowerCase()) {
             case "move", "<move>":
-                executeC.executeCommand(new MoveCommand(curAdv, curRoom, this));
+                executeC.executeCommand(new MoveCommand(curAdv, this));
                 break;
             case "search", "<search>":
                 if (validActions.get("search")) {
-                    executeC.executeCommand(new SearchCommand(curAdv, curRoom, this));
+                    executeC.executeCommand(new SearchCommand(curAdv, this));
                 }
                 else {
                     System.out.println(invalidAction);
@@ -411,7 +414,7 @@ public class GameRunner implements Subject{
                 break;
             case "fight", "<fight>":
                 if (validActions.get("fight")) {
-                    executeC.executeCommand(new FightCommand(curAdv, curRoom, this));
+                    executeC.executeCommand(new FightCommand(curAdv, this));
                 }
                 else {
                     System.out.println(invalidAction);
@@ -420,7 +423,7 @@ public class GameRunner implements Subject{
                 break;
             case "celebrate", "<celebrate>":
                 if (validActions.get("celebrate")) {
-                    executeC.executeCommand(new CelebrateCommand(curAdv, curRoom, this));
+                    executeC.executeCommand(new CelebrateCommand(curAdv, this));
                 }
                 else {
                     System.out.println(invalidAction);
@@ -435,9 +438,9 @@ public class GameRunner implements Subject{
                 System.out.println("Invalid command");
                 break;
         }
-
-
     }
+
+    // helper function for adventurerTurn() to determine what commands are currently available based on room state
     private HashMap<String, Boolean> checkAdvActions(Room curRoom) {
         HashMap<String, Boolean> availableActions = new HashMap<String, Boolean>() {{
             put("move", true);
@@ -460,8 +463,8 @@ public class GameRunner implements Subject{
             System.out.println("This room has no creatures. <celebrate> is available.");
         }
         return availableActions;
-
     }
+
     public void adventurerAction() {
         for (int i = 0; i < aliveAdventurers.size(); i++) { //check for alive adventurers
             Adventurer curAdv = aliveAdventurers.get(i);
@@ -579,12 +582,10 @@ public class GameRunner implements Subject{
         // System.out.println("Hello! Welcome to RotLA. This key will help you get to know the characters. B = Brawler, S = Sneaker, R = Runner, T = Thief, OB = Orbiter, SK = Seeker, and BK = Blinker. The game will now begin.");
         // playSpace.printBoard();
         while (!gO) {
-            Logger log = Logger.getInstance(turn);
+            Logger log = Logger.getLogger(turn);
             registerObserver(log);
 
             actionRunner(); //run actions
-            //playSpace.printBoard(); //print board
-            //printStats(); //print stats
             gO = gameOver(); //check if game is over
 
             addEvent("turnEnd", null, null);
@@ -598,11 +599,6 @@ public class GameRunner implements Subject{
 
 
     public static void main(String[] args) {
-        /* for(int i = 0; i  < 30; i++) {
-            System.out.printf("Game " + i + ": ");
-            GameRunner game = new GameRunner();
-            game.runGame();
-        } */
         GameRunner game = new GameRunner();
         game.runGame();
     }

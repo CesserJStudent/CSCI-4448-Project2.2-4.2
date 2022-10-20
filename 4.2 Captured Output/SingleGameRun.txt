@@ -1,0 +1,815 @@
+Choose an Adventurer: (Brawler, Sneaker, Runner, or Thief)
+Runner
+Name your Adventurer!
+okay
+Level 0
+0-1-1: okay
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - Portal   1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : OB Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - Sword   3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : OB Sword   3-2-1 - : - Armor   3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : BK Portal   4-0-2 - : - -
+   4-1-0 - : OB Trap   4-1-1 - : - Gem   4-1-2 - : OB SK BK Armor
+   4-2-0 - : BK Sword   4-2-1 - : - -    4-2-2 - : BK -
+
+okay has 10 health.
+
+OB: 4 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 24
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+move
+You are able to move in the following direction(s): above
+Please enter a direction to move in...
+above
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - Portal   1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 okay : - Armor   1-1-2 - : - -
+   1-2-0 - : OB Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - Sword   3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : OB Sword   3-2-1 - : - Armor   3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : BK Portal   4-0-2 - : - -
+   4-1-0 - : OB Trap   4-1-1 - : - Gem   4-1-2 - : OB SK BK Armor
+   4-2-0 - : BK Sword   4-2-1 - : - -    4-2-2 - : BK -
+Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)
+y
+You are able to move in the following direction(s): left, below, above, up, right, down
+Please enter a direction to move in...
+up
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 okay : - Portal   1-0-2 - : - -
+   1-1-0 - : SK OB BK Trap   1-1-1 - : BK Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : BK -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - Trap   3-0-1 - : - -    3-0-2 - : BK Potion
+   3-1-0 - : - Sword   3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : OB Armor   3-2-2 - : - Portal
+Level 4
+   4-0-0 - : OB Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : - Sword   4-2-1 - : OB -    4-2-2 - : - -
+
+okay has 10 health.
+
+OB: 4 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 24
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room contains a treasure! <search> is available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+search
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : BK Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : OB -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : BK -    2-0-2 - : - Gem
+   2-1-0 - : BK Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - Sword   3-1-1 - : - -    3-1-2 - : OB Trap
+   3-2-0 - : - Sword   3-2-1 - : - Armor   3-2-2 okay : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : OB OB -
+   4-1-0 - : - Trap   4-1-1 - : BK Gem   4-1-2 - : SK Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : - - 
+
+okay has 10 health.
+okay has collected the following treasures: Portal
+
+OB: 4 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 23
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room contains a treasure! <search> is available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+move
+You are able to move in the following direction(s): left, up
+Please enter a direction to move in...
+left
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : BK Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : OB -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : BK -    2-0-2 - : - Gem
+   2-1-0 - : BK Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - Sword   3-1-1 - : - -    3-1-2 - : OB Trap
+   3-2-0 - : - Sword   3-2-1 okay : - Armor   3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : OB OB -
+   4-1-0 - : - Trap   4-1-1 - : BK Gem   4-1-2 - : SK Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : - -
+Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)
+n
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : OB Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : BK -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - Sword   3-1-1 - : - -    3-1-2 - : BK Trap
+   3-2-0 - : - Sword   3-2-1 okay : - Armor   3-2-2 - : OB BK Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : BK Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : OB Sword   4-2-1 - : - -    4-2-2 - : OB -
+
+okay has 10 health.
+okay has collected the following treasures: Portal
+
+OB: 4 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 23
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room contains a treasure! <search> is available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+search
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : OB -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : BK -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : BK Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : BK Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : OB Sword   3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 okay : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK OB BK OB Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : - -
+
+okay has 10 health.
+okay has collected the following treasures: Armor, Portal
+
+OB: 4 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 22
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+move
+You are able to move in the following direction(s): left, up, right
+Please enter a direction to move in...
+left
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : OB -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : BK -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : BK Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : BK Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : OB Sword   3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 okay : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK OB BK OB Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : - - 
+Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)
+y
+You are able to move in the following direction(s): up, right
+Please enter a direction to move in...
+up
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : OB -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : BK Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - Trap   3-0-1 - : - -    3-0-2 - : BK Potion
+   3-1-0 okay : OB Sword   3-1-1 - : BK -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : OB OB Portal   4-0-2 - : - -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : BK Sword   4-2-1 - : - -    4-2-2 - : - -
+
+okay has 9 health.
+okay has collected the following treasures: Armor, Portal
+
+OB: 4 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 22
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room has a creature... <fight> is available.
+Please enter an available action...
+fight
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK OB Trap   1-1-1 - : - Armor   1-1-2 - : BK -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK BK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : BK Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 okay : - Sword   3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : OB Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : - Sword   4-2-1 - : BK -    4-2-2 - : OB -
+
+okay has 9 health.
+okay has collected the following treasures: Armor, Portal
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 22
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room contains a treasure! <search> is available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+search
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : BK Gem   1-2-1 - : OB -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 - : BK Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 okay : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : BK Potion   4-0-1 - : OB Portal   4-0-2 - : - -
+   4-1-0 - : BK Trap   4-1-1 - : - Gem   4-1-2 - : SK OB Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : - -
+
+okay has 9 health.
+okay has collected the following treasures: Sword, Armor, Portal
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 21
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+move
+You are able to move in the following direction(s): up, right, down
+Please enter a direction to move in...
+up
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : BK Gem   1-2-1 - : OB -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 - : BK Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 okay : - Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : BK Potion   4-0-1 - : OB Portal   4-0-2 - : - -
+   4-1-0 - : BK Trap   4-1-1 - : - Gem   4-1-2 - : SK OB Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : - -
+Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)
+n
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : BK Armor   1-0-1 - : OB -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 okay : - Trap   3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : BK Sword   3-2-1 - : - -    3-2-2 - : BK Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : OB Portal   4-0-2 - : - -
+   4-1-0 - : OB Trap   4-1-1 - : - Gem   4-1-2 - : SK BK Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : - -
+
+okay has 9 health.
+okay has collected the following treasures: Sword, Armor, Portal
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 21
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room contains a treasure! <search> is available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+search
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK OB Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : BK -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 okay : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : BK Portal
+Level 4
+   4-0-0 - : OB BK Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : OB BK Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : - - 
+
+okay has 8 health.
+okay has collected the following treasures: Sword, Armor, Portal, Trap
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 20
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+move
+You are able to move in the following direction(s): right, down
+Please enter a direction to move in...
+right
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK OB Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : BK -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 okay : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : BK Portal
+Level 4
+   4-0-0 - : OB BK Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : OB BK Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : - -
+Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)
+y
+You are able to move in the following direction(s): left, right, down
+Please enter a direction to move in...
+down
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : OB -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : BK Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : BK -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK BK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 okay : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : OB OB -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : - Sword   4-2-1 - : BK -    4-2-2 - : - -
+
+okay has 8 health.
+okay has collected the following treasures: Sword, Armor, Portal, Trap
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 20
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+move
+You are able to move in the following direction(s): left, below, above, up, right, down
+Please enter a direction to move in...
+below
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : OB -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : BK Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : BK -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 okay : - Sword   2-1-2 - : - Potion
+   2-2-0 - : SK BK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : OB OB -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : - Sword   4-2-1 - : BK -    4-2-2 - : - -
+Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)
+y
+You are able to move in the following direction(s): left, below, above, up, right, down
+Please enter a direction to move in...
+right
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : BK Armor   1-0-1 - : BK -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : OB -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 okay : - Potion
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : OB BK BK Portal   4-0-2 - : - -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : - Sword   4-2-1 - : OB -    4-2-2 - : - -
+
+okay has 8 health.
+okay has collected the following treasures: Sword, Armor, Portal, Trap
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 20
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room contains a treasure! <search> is available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+search
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : BK BK -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : OB Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 - : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 okay : - -
+   2-2-0 - : SK Potion   2-2-1 - : BK -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : BK Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : OB -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : OB Sword   4-2-1 - : - -    4-2-2 - : - -
+
+okay has 9 health.
+okay has collected the following treasures: Sword, Potion, Armor, Portal, Trap
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 19
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+move
+You are able to move in the following direction(s): left, up, down
+Please enter a direction to move in...
+up
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : BK BK -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : OB Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 okay : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - -
+   2-2-0 - : SK Potion   2-2-1 - : BK -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : BK Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : OB -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : OB Sword   4-2-1 - : - -    4-2-2 - : - -
+Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)
+n
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK OB BK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 okay : - Gem
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - -
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : BK Portal
+Level 4
+   4-0-0 - : BK BK Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK OB Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : OB -
+
+okay has 9 health.
+okay has collected the following treasures: Sword, Potion, Armor, Portal, Trap
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 4 Remaining
+Remaining Treasure: 19
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room contains a treasure! <search> is available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+search
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : BK OB -
+   1-1-0 - : SK BK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 okay : - -
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - -
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : BK Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : OB -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK OB Armor
+   4-2-0 - : - Sword   4-2-1 - : - -    4-2-2 - : - -
+
+okay has 9 health.
+okay has collected the following treasures: Sword, Potion, Armor, Portal, Trap, Gem
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 3 Remaining
+Remaining Treasure: 18
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+celebrate
+okay celebrates: dance
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK OB Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : BK Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 okay : - -
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - -
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - - 
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : OB Trap   4-1-1 - : - Gem   4-1-2 - : SK OB Armor
+   4-2-0 - : BK Sword   4-2-1 - : BK -    4-2-2 - : - -
+
+okay has 9 health.
+okay has collected the following treasures: Sword, Potion, Armor, Portal, Trap, Gem
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 3 Remaining
+Remaining Treasure: 18
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+fight
+That action is currently unavailable! Try again. 
+
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK OB Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : BK Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : - -    2-0-2 okay : - -
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - -
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : OB Trap   4-1-1 - : - Gem   4-1-2 - : SK OB Armor
+   4-2-0 - : BK Sword   4-2-1 - : BK -    4-2-2 - : - -
+
+okay has 9 health.
+okay has collected the following treasures: Sword, Potion, Armor, Portal, Trap, Gem
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 3 Remaining
+Remaining Treasure: 18
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+move
+You are able to move in the following direction(s): left, down
+Please enter a direction to move in...
+left
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK OB Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : BK Gem   1-2-1 - : - -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 okay : - -    2-0-2 - : - -
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - -
+   2-2-0 - : SK Potion   2-2-1 - : - -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : - Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : OB Trap   4-1-1 - : - Gem   4-1-2 - : SK OB Armor
+   4-2-0 - : BK Sword   4-2-1 - : BK -    4-2-2 - : - -
+Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)
+y
+You are able to move in the following direction(s): left, right, down
+Please enter a direction to move in...
+down
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 - : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : OB -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : BK -    2-0-2 - : - -
+   2-1-0 - : - Portal   2-1-1 okay : - Sword   2-1-2 - : - -
+   2-2-0 - : SK Potion   2-2-1 - : BK -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : OB BK Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : OB Sword   4-2-1 - : - -    4-2-2 - : - -
+
+okay has 9 health.
+okay has collected the following treasures: Sword, Potion, Armor, Portal, Trap, Gem
+
+OB: 3 Remaining
+SK: 4 Remaining
+BK: 3 Remaining
+Remaining Treasure: 18
+
+Your turn, okay!
+<move> and <quit> are always available.
+This room contains a treasure! <search> is available.
+This room has no creatures. <celebrate> is available.
+Please enter an available action...
+move
+You are able to move in the following direction(s): left, below, above, up, right, down
+Please enter a direction to move in...
+below
+Level 0
+0-1-1: - : -
+Level 1
+   1-0-0 - : - Armor   1-0-1 - : - -    1-0-2 - : - -
+   1-1-0 - : SK Trap   1-1-1 okay : - Armor   1-1-2 - : - -
+   1-2-0 - : - Gem   1-2-1 - : OB -    1-2-2 - : SK Gem
+Level 2
+   2-0-0 - : - -    2-0-1 - : BK -    2-0-2 - : - -
+   2-1-0 - : - Portal   2-1-1 - : - Sword   2-1-2 - : - -
+   2-2-0 - : SK Potion   2-2-1 - : BK -    2-2-2 - : - -
+Level 3
+   3-0-0 - : - -    3-0-1 - : - -    3-0-2 - : - Potion
+   3-1-0 - : - -    3-1-1 - : - -    3-1-2 - : - Trap
+   3-2-0 - : - Sword   3-2-1 - : - -    3-2-2 - : - Portal
+Level 4
+   4-0-0 - : OB BK Potion   4-0-1 - : - Portal   4-0-2 - : - -
+   4-1-0 - : - Trap   4-1-1 - : - Gem   4-1-2 - : SK Armor
+   4-2-0 - : OB Sword   4-2-1 - : - -    4-2-2 - : - -
+Next movement will avoid damage taken from escaping creatures. Would you like to move again? (y/n)
+y
+You are able to move in the following direction(s): left, below, above, up, right, down
+Please enter a direction to move in...
+below
+Victory! Returned home with all treasures!

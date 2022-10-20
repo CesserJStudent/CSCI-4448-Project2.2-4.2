@@ -1,0 +1,10 @@
+okay has found a treasure! They have gained the effects of Portal.
+okay has moved to room [3, 2, 2].
+Orbiter has moved to room [4, 0, 2].
+Blinker has moved to room [1, 1, 1].
+Orbiter has moved to room [4, 0, 2].
+Blinker has moved to room [2, 1, 0].
+Orbiter has moved to room [1, 2, 1].
+Blinker has moved to room [2, 0, 1].
+Orbiter has moved to room [3, 1, 2].
+Blinker has moved to room [4, 1, 1].
