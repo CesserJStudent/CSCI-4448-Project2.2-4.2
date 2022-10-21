@@ -16,4 +16,4 @@ OpenJDK 64-Bit Server VM (build 17.0.4+8-Ubuntu-120.04, mixed mode, sharing)
 
 ## RotLA UML Diagram update:  
 ![RotLA UML diagram v4.2](RotLA_UML_v4.2.png)  
-command changes, factory changes, adventurer attributes trimmed, methods changed to fit new adventurer behavior (expand on this before turning in)
+The biggest change between the UML for 4.1 and 4.2 is the Command pattern. Instead of having the existing Celebrate, Combat, and Search classes implement a Command interface, an abstract class AdventurerCommand with its own concrete command classes was created. The execute method of these concrete command classes, with the exception of MoveCommand, uses methods defined in GameRunner that already had the desired behavior of each command. CommandExecutor serves as an invoker for commands. Additionally, both Factory classes now use Simple Factory instead of implementing subclasses for Factory since both Adventurers and Creatures don't have any extra behaviors to set. Aside from that, there were many little changes to some existing classes like dropping/renaming attributes and refactoring existing methods.  
