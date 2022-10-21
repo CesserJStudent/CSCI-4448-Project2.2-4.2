@@ -1,14 +1,14 @@
 // import java.util.Locale;
 import java.util.Scanner;
 
-public abstract class AdventurerCommand {
+public abstract class AdventurerCommand { //abstract class for adventurer commands
     GameRunner runner;
     Adventurer curAdv;
     Room curRoom;
     abstract void execute();
 }
 
-class FightCommand extends AdventurerCommand {
+class FightCommand extends AdventurerCommand { //fight command class
     FightCommand(Adventurer adv, GameRunner gRunner) {
         curAdv = adv;
         curRoom = adv.board.getRoomAt(adv.location);
@@ -20,7 +20,7 @@ class FightCommand extends AdventurerCommand {
     }
 }
 
-class MoveCommand extends AdventurerCommand {
+class MoveCommand extends AdventurerCommand { //move command class
     MoveCommand(Adventurer adv, GameRunner gRunner) {
         curAdv = adv;
         curRoom = adv.board.getRoomAt(adv.location);
@@ -28,7 +28,7 @@ class MoveCommand extends AdventurerCommand {
     }
     @Override
     void execute() {
-        if(curAdv instanceof Runner) {
+        if(curAdv instanceof Runner) { //if the adventurer is a runner, they get to move twice
             curAdv.move();
             runner.addEvent("advMove", curAdv, null);
             escapeDamage();
@@ -44,7 +44,7 @@ class MoveCommand extends AdventurerCommand {
                 runner.addEvent("advMove", curAdv, null);
             }
         }
-        else {
+        else { //if the adventurer is not a runner, they only get to move once
             curAdv.move();
             runner.addEvent("advMove", curAdv, null);
             escapeDamage();
@@ -65,8 +65,8 @@ class MoveCommand extends AdventurerCommand {
     }
 }
 
-class CelebrateCommand extends AdventurerCommand {
-    CelebrateCommand(Adventurer adv, GameRunner gRunner) {
+class CelebrateCommand extends AdventurerCommand { //celebrate command class
+    CelebrateCommand(Adventurer adv, GameRunner gRunner) { //constructor
         curAdv = adv;
         curRoom = adv.board.getRoomAt(adv.location);
         runner = gRunner;
@@ -78,7 +78,7 @@ class CelebrateCommand extends AdventurerCommand {
     }
 }
 
-class SearchCommand extends AdventurerCommand {
+class SearchCommand extends AdventurerCommand { //search command class
     SearchCommand(Adventurer adv, GameRunner gRunner) {
         curAdv = adv;
         curRoom = adv.board.getRoomAt(adv.location);
